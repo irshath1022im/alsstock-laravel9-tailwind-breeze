@@ -3,32 +3,66 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>ALS STOCK </title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-        <!-- Scripts -->
-        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+        {{-- @vite('resources/css/app.css') --}}
+
+        @livewireStyles
+
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <body>
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
+
+        {{-- @include('navigation') --}}
+
+        <div>
+
+            <header class="flex bg-gray-700 text-white item-center  justify-between">
+
+                <span class="text-2xl sm:text-3xl text-white p-3 block font-bold">
+                   ALS STOCK MANAGEMENT
+                </span>
+
+                <nav>
+                    <ul class="flex">
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">HOME</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">STORE</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">CATEGORIES</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">ITEMS</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a>
+                        </li>
+                    </ul>
+
+                </nav>
             </header>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
         </div>
+
+
+        <div class="container mx-auto mt-3">
+            @yield('content')
+        </div>
+
+
+
+        @livewireScripts
+
     </body>
 </html>
