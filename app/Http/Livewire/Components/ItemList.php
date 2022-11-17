@@ -9,7 +9,10 @@ use Livewire\WithPagination;
 class ItemList extends Component
 {
 
+    use WithPagination;
+
     public $selected_category = 1;
+
 
     protected $listeners=['selectedCategory'];
 
@@ -19,7 +22,7 @@ class ItemList extends Component
         $this->selected_category = $id;
     }
 
-    use WithPagination;
+
 
     public function render()
     {

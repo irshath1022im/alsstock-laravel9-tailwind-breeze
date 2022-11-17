@@ -4,6 +4,12 @@
 
      {{-- @dump($categories) --}}
 
+     <div wire:loading>
+        @component('components.loading')
+
+        @endcomponent
+     </div>
+
      @isset($categories)
 
 
