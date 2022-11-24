@@ -46,23 +46,19 @@
 
                     <div class="mb-1 flex"  >
 
-                        <button   @click="setActiveId({{ $item->id }})" id="{{ $item->id }}" type="button" class="inline-flex items-center px-5 py-2.5 text-small font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-blue-300"   :aria-expanded="open">
+                        <button
+                        @click="setActiveId({{ $item->id }})"
+                        id="{{ $item->id }}"
+                        type="button"
+                        class="  {{  $item->transectionLogs->sum('qty') > 0 ? 'bg-green-500  hover:bg-green-900' : 'bg-slate-400' }}
+                        inline-flex items-center px-5 py-2.5 text-small font-medium text-center text-white  rounded-lg focus:ring-blue-300"
+                        :aria-expanded="open"
+                        {{  $item->transectionLogs->sum('qty') > 0 ? null : 'disabled' }}
+                        >
                         {{ $item->id}} {{ $item->size->size }}
                             <span class=" inline-flex  justify-center ml-2 w-4 h-4 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
                             {{  $item->transectionLogs->sum('qty') }}
                             </span>
-
-
-                        {{-- <span x-show="!open" class="border border-red-900 bg-slate-300 rounded" >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                            </svg>
-                        </span>
-
-                            <svg x-show = "open" class="border border-red-900 bg-slate-300 rounded" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-                            </svg> --}}
-
 
                         </button>
 
@@ -90,6 +86,7 @@
                                 <tr class="">
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">TRANS ID</th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">ITEM SIZE ID</th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">SIZE</th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">TRANS TYPE</th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">QTY</th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">REMARK</th>
@@ -103,8 +100,9 @@
 
                                     <tr class="bg-gray-100 border-b">
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->id }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->size }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->transection_type }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->item_size_id }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->itemSize->size->size}}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->transectionType->type }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->qty }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->remark }}</td>
                                     </tr>

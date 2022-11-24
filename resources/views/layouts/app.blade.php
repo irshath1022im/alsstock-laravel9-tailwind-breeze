@@ -34,7 +34,7 @@
                 <nav>
                     <ul class="flex">
                         <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">HOME</a>
+                            <a href="/" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">HOME</a>
                         </li>
                         <li>
                             <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">STORE</a>
@@ -43,7 +43,7 @@
                             <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">CATEGORIES</a>
                         </li>
                         <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">ITEMS</a>
+                            <a href="" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">ITEMS</a>
                         </li>
                         <li>
                             <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a>

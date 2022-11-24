@@ -48,7 +48,11 @@ class ItemController extends Controller
     {
         //
         $result = Item::with(['itemSize' => function($query){
-            return $query->with('size', 'transectionLogs');
+            return $query->with(['size', 'transectionLogs' => function($query){
+                return $query->with(['itemSize' => function($query){
+                    return $query->with('size');
+                }]);
+            }]);
         }])->findOrfail($id);
         return view('pages.item',['item' => $result]);
     }
