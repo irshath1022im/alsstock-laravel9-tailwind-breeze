@@ -13,9 +13,9 @@
             <h5 class="bg-orange-300 text-center text-lg text-stone-400 p-3">{{ $item->item }}E</h5>
         </div>
 
-        <div>
+        <div class="h-40">
             <a href="#">
-                <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" alt="">
+                <img src="{{ Storage::URL($item->thumbnail) }}" alt="" class="md:w-full border h-full">
             </a>
         </div>
 
