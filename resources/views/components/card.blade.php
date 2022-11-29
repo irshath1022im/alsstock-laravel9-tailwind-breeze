@@ -20,7 +20,7 @@
         </div>
 
         <div class="mt-1 flex justify-between">
-            <button class="rounded border-red-500 border-2 p-1">View More</button>
+            <a href="{{ route('items.show',['item' => $item->id]) }}" target="_blank" ><button class="rounded border-red-500 border-2 p-1">View More</button></a>
             <button  class="rounded border-blue-500 border-2 p-1">{{ $item->category->category }}</button>
         </div>
 

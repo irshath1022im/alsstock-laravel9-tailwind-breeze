@@ -67,7 +67,7 @@
                     </div>
 
 
-                    <div x-show="active_id == {{ $item->id }} ? true : false" x-transition.duration.500ms>
+                    <div x-show="active_id == {{ $item->id }} ? true : false" x-transition.duration.500ms >
 
                         <div class="relative">
 
@@ -78,42 +78,40 @@
                             </button>
                         </div>
 
-                        <table class="table-auto   border-separate border  border-slate-400">
-                            <thead>
-
-
-
-                                <tr class="">
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">TRANS ID</th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">ITEM SIZE ID</th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">SIZE</th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">TRANS TYPE</th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">QTY</th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">REMARK</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-
-                                @foreach ($item->transectionLogs as $log)
-
-
-                                    <tr class="bg-gray-100 border-b">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->id }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->item_size_id }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->itemSize->size->size}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->transectionType->type }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->qty }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->remark }}</td>
+                        <div class="ooverflow-x-auto rounded-lg shadow">
+                            <table class="border-separate border  border-slate-400 w-full">
+                                <thead>
+                                    <tr class="">
+                                        <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">TRANS ID</th>
+                                        <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">ITEM SIZE ID</th>
+                                        <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">SIZE</th>
+                                        <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">TRANS TYPE</th>
+                                        <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">QTY</th>
+                                        <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">REMARK</th>
                                     </tr>
+                                </thead>
 
-                                @endforeach
+                                <tbody class="divide-y divide-green-600">
 
-                            </tbody>
+                                    @foreach ($item->transectionLogs as $log)
 
 
-                        </table>
+                                        <tr class="bg-gray-100 border-b">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->id }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->item_size_id }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->itemSize->size->size}}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->transectionType->type }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->qty }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->remark }}</td>
+                                        </tr>
 
+                                    @endforeach
+
+                                </tbody>
+
+
+                            </table>
+                        </div>
 
                     </div>
 
