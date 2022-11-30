@@ -15,10 +15,22 @@
 
         {{-- @vite('resources/css/app.css') --}}
 
+
+        <style>
+            [x-cloak] {
+           display: none !important;
+        }
+         </style>
         @livewireStyles
 
+
     </head>
+
+
+
     <body>
+
+
 
 
         {{-- @include('navigation') --}}
@@ -40,10 +52,10 @@
                             <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">STORE</a>
                         </li>
                         <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">CATEGORIES</a>
+                            <a href="{{ route('categories.index') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">CATEGORIES</a>
                         </li>
                         <li>
-                            <a href="" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">ITEMS</a>
+                            <a href="{{ route('items.index') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">ITEMS</a>
                         </li>
                         <li>
                             <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a>

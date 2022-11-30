@@ -16,7 +16,7 @@ class NewCategoryForm extends Component
     public $editMode = false;
     public $category_id;
 
-    protected $listeners = ['editCategory'];
+    protected $listeners = ['editCategory','sendEditRequest'];
 
     public function editCategory($category_id)
     {
@@ -42,6 +42,14 @@ class NewCategoryForm extends Component
         // $this->category = $category_id;
     }
 
+    public function sendEditRequest($category)
+    {
+        $this->editMode = true;
+        $this->category = $category['category'];
+        $this->store_id = $category['store_id'];
+        $this->category_id = $category['id'];
+    }
+
 
     public function formSubmit()
     {
@@ -53,11 +61,12 @@ class NewCategoryForm extends Component
 
         Category::create($validated);
 
-        $this->resetValidation();
-        session()->flash('created', 'Category is Added...');
-        redirect()->route('categories.index');
 
+        $this->resetExcept('stores');
+        session()->flash('created', 'Category is Added...');
+    // $this->closeModal();
     }
+
 
 
     public function formUpdateRequest()
@@ -79,9 +88,18 @@ class NewCategoryForm extends Component
                     ->update($validated);
 
         $this->resetValidation();
+        $this->resetExcept('stores','editMode');
         session()->flash('updated', 'Category is Updated...');
-        redirect()->route('categories.index');
+        // redirect()->route('categories.index');
 
+    }
+
+
+    public function closeModal()
+    {
+        $this->resetExcept('stores');
+        $this->resetValidation();
+        $this->emit('modalCloseRequest');
     }
 
 

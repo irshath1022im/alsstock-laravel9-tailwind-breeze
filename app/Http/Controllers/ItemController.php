@@ -15,6 +15,7 @@ class ItemController extends Controller
     public function index()
     {
         //
+        return view('pages.item.index');
     }
 
     /**

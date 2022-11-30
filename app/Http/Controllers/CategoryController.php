@@ -14,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $result = Category::all();
-        return view('pages.category.index',['categories' => $result]);
+        // $result = Category::all();
+        return view('pages.category.index');
     }
 
     /**
