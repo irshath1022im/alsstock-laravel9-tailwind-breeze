@@ -26,6 +26,7 @@ class ItemController extends Controller
     public function create()
     {
         //
+        return view('pages.item.create', ['id' => null]);
     }
 
     /**
@@ -67,6 +68,7 @@ class ItemController extends Controller
     public function edit($id)
     {
         //
+        return view('pages.item.create', ['id' => $id]);
     }
 
     /**
