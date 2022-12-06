@@ -7,7 +7,8 @@
 
 
 show page
-    <div  class="border border-slate-700 rounded">
+    <div  class="border border-slate-700 rounded ">
+
         <h5 class="bg-slate-500 p-2 text-2xl">ITEM : <span class="bg-blue-200  px-2 mx-3 rounded-full text-lg">{{ $item->id }}</span></h5>
 
         <div class="grid grid-cols-12">
@@ -36,7 +37,12 @@ show page
 
             {{-- ITEMS SIZE COLUMN --}}
 
-            <div class=" col-span-12 sm:col-span-9 m-2 rounded-lg border flex flex-col items-center bg-slate-100"
+
+
+
+
+
+            <div class=" relative col-span-12 sm:col-span-9 m-2 rounded-lg border flex flex-col items-center bg-slate-100"
                 x-data="{
                     active_id : null ,
                     setActiveId(value){
@@ -47,6 +53,14 @@ show page
                     }
                 }"
             >
+
+
+            <div class="absolute right-0">
+                <button class="bg-orange-300 border rounded-lg p-2">NEW ITEM SIZE</button>
+            </div>
+
+
+
 
                 @foreach ($item->itemSize as $item)
 
