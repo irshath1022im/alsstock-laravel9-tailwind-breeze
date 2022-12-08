@@ -10,13 +10,21 @@ class ShowItem extends Component
 
     public $item_id;
     public $itemSizeFormModal = false;
+    public $transModalShowStatus = false;
 
-    protected $listeners =['formCloseRequest'];
+    protected $listeners =['formCloseRequest', 'itemFormSubmitted'];
+
+
+    public function itemFormSubmitted()
+    {
+
+    }
 
 
     public function formCloseRequest()
     {
         $this->itemSizeFormModal = false;
+        $this->transModalShowStatus = false;
     }
 
     public function mount($item_id)

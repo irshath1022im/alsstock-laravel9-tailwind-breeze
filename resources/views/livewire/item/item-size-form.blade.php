@@ -10,7 +10,7 @@
 
             @error('item_id')
 
-            <x-form_error field="size"></x-form_error>
+            <x-form_error field="item_id"></x-form_error>
 
              @enderror
 

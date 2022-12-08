@@ -1,20 +1,87 @@
 <div>
 
 
+    <x-success></x-success>
+
+
     <div  class="border border-slate-700 rounded "
-                x-data="{open2: @entangle('itemSizeFormModal') }"
+                x-data="{ open2: @entangle('itemSizeFormModal')}"
         >
 
         <h5 class="bg-slate-500 py-1 px-2 text-2xl">ITEM : <span class="bg-blue-200  px-2 mx-3 rounded-full text-lg">{{ $item_id }}</span></h5>
 
-        <div class="flex justify-center"
+        {{-- ADMIN MENU --}}
 
-        >
-            {{-- <button class="bg-orange-300 border rounded-lg p-2">ADD NEW ITEM SIZE</button></a> --}}
-            <x-button class="bg-orange-200"
-                x-on:click="open2 = true"
-            > NEW ITEM SIZE</x-button>
-         </div>
+        <div class="flex justify-center">
+
+
+                    <div class="flex justify-center mx-2" >
+                        <x-button class="bg-orange-200"
+                                x-on:click="open2 = true"
+                            > NEW ITEM SIZE
+                        </x-button>
+                    </div>
+
+
+
+                    <div class="flex justify-center"
+                        x-data="{ transModalShow: @entangle('transModalShowStatus')}"
+                        >
+
+                        <x-button class="bg-cyan-200-200"
+                                x-on:click="transModalShow = true"
+                            > TRANSECTIONS
+                        </x-button>
+
+
+                        {{-- Transection Modal --}}
+                            <div
+                            x-show="transModalShow"
+                            style="display: none"
+                            x-on:keydown.escape.prevent.stop="transModalShow = false"
+                            role="dialog"
+                            aria-modal="true"
+                            x-id="['modal-title2']"
+                            :aria-labelledby="$id('modal-title2')"
+                            class="fixed inset-0 z-20 overflow-y-auto"
+                        >
+
+
+                            {{-- Overlay --}}
+                                <x-modal.overlay status="transModalShow"
+                                x-on:click="transModalShow = false"
+                                ></x-modal.overlay>
+
+                                <!-- Panel -->
+                                    <div
+                                        x-show="transModalShow" x-transition
+                                        x-on:click="transModalShow = true"
+                                        class="relative flex min-h-screen items-center justify-center p-4"
+                                    >
+
+                                            <div
+                                            x-on:click.stop
+                                            x-trap.noscroll.inert="transModalShow"
+                                            class="relative w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-12 shadow-lg"
+                                        >
+                                            <!-- Title -->
+                                            @livewire('item.item-transection-form',['item_id' => $item_id])
+
+                                            </div>
+
+
+                                    </div>
+
+
+                            </div>
+
+
+                    </div>
+
+
+        </div>
+
+
 
 
         <div class="grid grid-cols-12">
@@ -45,16 +112,28 @@
 
             {{-- ITEMS SIZE COLUMN --}}
 
-            @livewire('components.item-size.item-size-list',['item_id' => $item_id])
+
+
+
+
+            <div class="sm:col-span-9 col-span-full m-1 p-1">
+
+                @livewire('components.item-size.item-size-list',['item_id' => $item_id])
+
+            </div>
+
+
 
         </div>
+
+
 
 
 {{-- ITEM SIZE MODAL --}}
         <div
             x-show="open2"
             style="display: none"
-            x-on:keydown.escape.prevent.stop="open2 = false"
+            {{-- x-on:keydown.escape.prevent.stop="open2 = false" --}}
             role="dialog"
             aria-modal="true"
             x-id="['modal-title']"
@@ -63,7 +142,7 @@
 
 
         {{-- Overlay --}}
-            <x-modal.overlay></x-modal.overlay>
+            <x-modal.overlay status="open2"></x-modal.overlay>
 
               <!-- Panel -->
                 <div
@@ -92,6 +171,8 @@
 
 
 
+
+    </div>
 
 
 
