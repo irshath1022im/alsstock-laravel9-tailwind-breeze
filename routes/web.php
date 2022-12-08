@@ -26,6 +26,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('items', ItemController::class);
+
+
 Route::resource('categories', CategoryController::class);
 
 require __DIR__.'/auth.php';
