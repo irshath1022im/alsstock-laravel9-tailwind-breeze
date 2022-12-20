@@ -23,7 +23,8 @@
                         <thead>
                             <tr class="">
                                 <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">TRANS ID</th>
-                                <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">ITEM SIZE ID</th>
+                                <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">DATE</th>
+                                <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">SIZE ID</th>
                                 <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">SIZE</th>
                                 <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">TRANS TYPE</th>
                                 <th scope="col" class="w-20 text-sm font-medium text-gray-900 px-6 py-4 text-left">QTY</th>
@@ -38,6 +39,7 @@
 
                                 <tr class="bg-gray-100 border-b">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->id }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->date }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->item_size_id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->itemSize->size->size}}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->transectionType->type }}</td>
