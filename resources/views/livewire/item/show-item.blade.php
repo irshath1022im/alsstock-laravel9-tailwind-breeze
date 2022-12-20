@@ -28,7 +28,7 @@
                         x-data="{ transModalShow: @entangle('transModalShowStatus')}"
                         >
 
-                        <x-button class="bg-cyan-200-200"
+                        <x-button class="bg-cyan-500"
                                 x-on:click="transModalShow = true"
                             > TRANSECTIONS
                         </x-button>

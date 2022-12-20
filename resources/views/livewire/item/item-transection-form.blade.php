@@ -90,7 +90,7 @@
 
         </div>
 
-        <x-button type="button" class="" wire:click="formSubmit" wire:loading.attr="disabled">Submit</x-button>
+        <x-button type="button" class="bg-blue-500" wire:click="formSubmit" wire:loading.attr="disabled">Submit</x-button>
         <x-button type="button" class="bg-gray-300" wire:click="formCancell">Cancell</x-button>
 
 
