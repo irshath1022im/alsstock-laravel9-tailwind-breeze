@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\StoreRequestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,5 +30,7 @@ Route::resource('items', ItemController::class);
 
 
 Route::resource('categories', CategoryController::class);
+
+Route::resource('storeRequest', StoreRequestController::class);
 
 require __DIR__.'/auth.php';

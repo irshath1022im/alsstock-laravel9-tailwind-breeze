@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .card {
+        @apply bg-slate-50  border rounded-md;
+    }
+
+    .card-header{
+        @apply px-3 py-2  border-b-2;
+    }
+    .card-heading{
+        @apply text-xl font-medium;
+    }
+
+    .card-body{
+        @apply bg-slate-50 font-medium px-3 py-2 ;
+    }
+
+    .card-footer{
+        @apply bg-slate-50 font-semibold px-3 py-2 border-2 rounded-md;
+    }
+}
+
+
+@layer components {
+
+}

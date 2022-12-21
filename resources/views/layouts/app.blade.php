@@ -62,6 +62,10 @@
                         <li>
                             <a href="{{ route('items.index') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">ITEMS</a>
                         </li>
+
+                        <li>
+                            <a href="{{ route('storeRequest.index') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">STORE REQUEST</a>
+                        </li>
                         <li>
                             <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a>
                         </li>
