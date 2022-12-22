@@ -53,7 +53,7 @@
                         <div class="flex flex-col text-sm flex-1 p-2">
 
                             {{-- <button class="border p-2 bg-sky-600">ITEMS</button> --}}
-                            <x-button class="bg-blue-400">VIEW</x-button>
+                            <a href="{{ route('storeRequest.show',['storeRequest' => $item->id]) }}"><x-button class="bg-blue-400">VIEW</x-button></a>
                             <x-button class="bg-red-400" wire:click="openUpdateForm({{ $item->id }})">Edit</x-button>
                         </div>
                     </ul>

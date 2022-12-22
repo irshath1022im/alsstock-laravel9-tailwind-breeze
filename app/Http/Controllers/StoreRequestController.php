@@ -49,6 +49,8 @@ class StoreRequestController extends Controller
     public function show($id)
     {
         //
+        $result = StoreReuqest::withCount('storeRequestItems')->findOrFail($id);
+        return view('pages.storeRequest.show',['store_request' => $result]);
     }
 
     /**
