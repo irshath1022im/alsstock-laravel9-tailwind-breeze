@@ -1,11 +1,15 @@
-<div class="">
+<div class=""  x-data="{showNewRequestForm : @entangle('newRequestFormModalStatus')}"  x-cloak>
 
 
 
     <div class="card">
-        <div class="card-header">
+        <div class="card-header flex justify-between items-center">
 
             <h3 class="card-heading">STORE REQUEST</h3>
+            <x-button class="bg-blue-400"
+                wire:click="openNewForm"
+
+            >New Request</x-button>
 
             {{-- <div>
                 <button type="button" class="btn btn-primary btn-sm"
@@ -49,8 +53,8 @@
                         <div class="flex flex-col text-sm flex-1 p-2">
 
                             {{-- <button class="border p-2 bg-sky-600">ITEMS</button> --}}
-                            <button class="border p-2 bg-sky-600">VIEW</button>
-                            <button class="border p-2 bg-red-600">EDIT</button>
+                            <x-button class="bg-blue-400">VIEW</x-button>
+                            <x-button class="bg-red-400" wire:click="openUpdateForm({{ $item->id }})">Edit</x-button>
                         </div>
                     </ul>
 
@@ -73,6 +77,49 @@
 
 
 
+    <div
+        x-show="showNewRequestForm"
+        role="dialog"
+        class="modal"
+
+    >
+
+     {{-- Overlay --}}
+
+        <div
+            x-show="showNewRequestForm"
+            x-transition.opacity
+            class="modal-overlay"
+        >
+
+        </div>
+
+
+    <!-- Modal Body -->
+            <div
+                x-show="showNewRequestForm"
+                x-transition
+                x-on:click="showNewRequestForm = true"
+                class="modal-body"
+            >
+
+            {{-- Modal Content --}}
+                    <div
+                    x-on:click.stop
+                    x-trap.noscroll.inert="showNewRequestForm"
+                    class="modal-content"
+                >
+
+                @livewire('store-request.new-request-form')
+
+
+                    </div>
+
+
+            </div>
+
+
+    </div>
 
 
 
@@ -86,5 +133,5 @@
 
 
 
-
+{{-- END OF LIVEWIRE --}}
 </div>

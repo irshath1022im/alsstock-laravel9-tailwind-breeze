@@ -26,6 +26,7 @@
            display: none !important;
         }
          </style>
+
         @livewireStyles
 
 
