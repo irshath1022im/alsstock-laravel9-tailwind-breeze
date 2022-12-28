@@ -34,23 +34,24 @@
 
 
 
-    <body>
+    <body class="">
 
 
 
 
         {{-- @include('navigation') --}}
 
-        <div>
+        <div class="w-full">
 
-            <header class="flex bg-gray-700 text-white item-center  justify-between">
+
+            <header class="flex bg-gray-700 text-white item-center  justify-between items-center">
 
                 <span class="text-2xl sm:text-3xl text-white p-3 block font-bold">
                    ALS STOCK MANAGEMENT
                 </span>
 
-                <nav>
-                    <ul class="flex">
+                <nav class="">
+                    <ul class="flex-col md:flex md:flex-row ">
                         <li>
                             <a href="/" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">HOME</a>
                         </li>
@@ -78,7 +79,7 @@
         </div>
 
 
-        <div class="container mx-auto mt-3">
+        <div class=" md:container mx-auto mt-3">
             @yield('content')
         </div>
 
