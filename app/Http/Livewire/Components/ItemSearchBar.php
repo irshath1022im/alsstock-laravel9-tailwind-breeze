@@ -12,8 +12,16 @@ class ItemSearchBar extends Component
        use WithPagination;
     // protected $paginationTheme = 'bootstrap';
 
-    public $search_value;
+    public $search_value = null;
     public $search_results=[];
+
+    protected $listeners = ['closeModalRequest'];
+
+
+    public function closeModalRequest()
+    {
+        $this->reset('search_value','search_results');
+    }
 
     public function updatedSearchValue()
     {
@@ -31,7 +39,7 @@ class ItemSearchBar extends Component
         {
 
             $search_value = preg_replace("/[^A-Za-z0-9 ]/", '', $this->search_value);
-            $result = Item::where('item', 'like','%'.$search_value.'%' )->take(2)->get();
+            $result = Item::where('item', 'like','%'.$search_value.'%' )->take(3)->get();
 
             // dump($result);
             if(count($result) > 0)
@@ -51,6 +59,7 @@ class ItemSearchBar extends Component
     public function selectedItem($item)
     {
         $this->search_value = $item['item'];
+        $this->search_results = [];
         $this->emit('sendSelectedItemId', $item['id']);
     }
 

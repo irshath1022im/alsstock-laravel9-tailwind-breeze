@@ -1,7 +1,7 @@
 <div>
 
     <div
-    x-data="{open : false}" x-cloak
+    x-data="{open : @entangle('newRequestItemForm')}" x-cloak
 class="card  bg-gray-300" >
     <div class="card-header">
         <p class="card-heading">STORE REQUEST # <span>{{ $store_request_id }}</span></p>
@@ -80,7 +80,7 @@ class="card  bg-gray-300" >
                                     <td class="w-2 p-3 text-sm text-gray-700 whitespace-nowrap">{{ $item->id }}</td>
                                     <td class="w-4 p-3 text-sm text-gray-700 whitespace-nowrap">{{ $item->itemSize->size->size }}</td>
                                     <td class="w-15 p-3 text-sm text-gray-700 whitespace-nowrap"> {{ $item->itemSize->item->item }}</td>
-                                    <td class="w-4 p-3 text-sm text-gray-700 whitespace-nowrap"><span class="bg-orange-500 px-2 rounded-lg py-1 mt-1">15</span></td>
+                                    <td class="w-4 p-3 text-sm text-gray-700 whitespace-nowrap"><span class="bg-orange-500 px-2 rounded-lg py-1 mt-1">{{ $item->qty }}</span></td>
                                     <td class="w-8 p-3 text-sm text-gray-700 whitespace-nowrap">
                                         <x-button class="bg-red-500 text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor" class="w-3 h-3">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />

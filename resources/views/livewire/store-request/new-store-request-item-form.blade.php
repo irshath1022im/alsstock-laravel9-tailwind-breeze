@@ -27,6 +27,7 @@
                   <select type="select" class="form-controll" wire:model.lazy="item_size_id" >
 
                     <option value="">Select</option>
+
                     @foreach ($item_sizes as $item)
 
                 {{-- this item return itemSize --}}
@@ -50,7 +51,11 @@
                 <div class="mb-3">
                   <label for="" class="form-label">Qty</label>
                   <input type="number"
-                    class="form-controll" wire:model.debounce.500mc="qty" placeholder="Qty">
+                    class="form-controll" wire:model.debounce.500mc="qty" placeholder="Qty"
+                        @if ($qtyDisable)
+                            disabled
+                        @endif
+                    >
 
                     <x-form_error field="qty"></x-form_error>
 

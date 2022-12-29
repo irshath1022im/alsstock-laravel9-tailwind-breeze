@@ -3,7 +3,8 @@
 
     <div class="mb-3">
         <label for="" class="">Search For Item</label>
-        <input type="text"
+        <input
+            type="text"
             class="form-controll"
             value="{{ $search_value }}"
             wire:model.debounce.500ms="search_value"
@@ -14,21 +15,30 @@
 
       {{-- SEARCH RESULT --}}
 
+      @if ($search_value == null)
 
-      @empty($search_value)
+      <div class="bg-green-200 p-2 rounded-md opacity-60 my-1" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        <strong>No Search Value</strong>
+      </div>
+
+
+
+
+    {{-- @empty($search_value)
 
           <div class="bg-green-200 p-2 rounded-md opacity-60 my-1" role="alert">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
             <strong>No Search Value</strong>
-          </div>
+          </div> --}}
 
      @else
 
      @if (count($search_results) > 0)
 
           <div class="bg-blue-200 px-2 py-1 m-3" role="alert">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
                 <ul class="list-group divide-y divide-blue-100  ">
 
@@ -52,22 +62,35 @@
 
             @else
 
+
+
+            @if (!$search_value)
+
+            {{--
+
+                    * After selected a item from search value, we don't need to show this error
+            --}}
+
             <div class="bg-green-200 p-2 rounded-md opacity-60 my-1" role="alert">
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
                 <strong>No Items Found !!!</strong>
               </div>
 
+            @endif
+
+
 
             @endif
 
 
 
+    @endif
 
 
 
 
-      @endempty
+
 
 
 

@@ -37,7 +37,7 @@ class ItemSizeList extends Component
     {
 
         $result = ItemSize::where('item_id', $this->item_id)
-                ->with(['size','transectionLogs'])
+                ->with(['size','transectionLogs','storeRequestItems'])
                         ->get();
         return view('livewire.components.item-size.item-size-list',['item_sizes' => $result]);
     }

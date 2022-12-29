@@ -10,7 +10,15 @@ class ShowRequest extends Component
 {
 
     public $store_request_id;
+    public $newRequestItemForm = false;
 
+    protected $listeners = ['closeModalRequest'];
+
+
+    public function closeModalRequest()
+    {
+        $this->newRequestItemForm = false;
+    }
 
     public function mount($store_request_id)
     {

@@ -17,6 +17,7 @@ class NewStoreRequestItemForm extends Component
     public $selectedItemId;
     public $item_sizes=[];
     public $availableQty=0;
+    public $qtyDisable = true;
 
 
 
@@ -42,14 +43,22 @@ class NewStoreRequestItemForm extends Component
     public function updatedItemSizeId()
     {
 
+        $this->resetErrorBag();
+
             if(!empty($this->item_size_id ))
 
             {
-                $this->availableQty = $this->item_size_id;
+                // $this->availableQty = $this->item_size_id;
+
 
                 $total = ItemSize::with('transectionLogs','storeRequestItems')->find($this->item_size_id);
 
                 $this->availableQty = $total->transectionLogs->sum('qty') - $total->storeRequestItems->sum('qty');
+                $this->reset('qty');
+                $this->qtyDisable = $this->availableQty > 0 ? false : true;
+            }
+            else {
+                $this->reset('availableQty', 'qty', 'qtyDisable');
             }
 
 
@@ -94,9 +103,10 @@ class NewStoreRequestItemForm extends Component
         ];
 
         StoreRequestItem::create($data);
-        $this->emit('newItemAdded');
-        $this->resetExcept('store_request_id');
+        // $this->emit('newItemAdded');
+        // $this->resetExcept('store_request_id');
         session()->flash('created', 'Item Has been Added...');
+        $this->closeModal();
     }
 
     public function mount($store_request_id)
