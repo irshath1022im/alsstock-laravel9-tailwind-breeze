@@ -59,7 +59,8 @@ class="card  bg-gray-300" >
 
                 <div class="card-body">
 
-                    @if ($store_request->store_request_items_count > 1)
+                    @if (count($store_request->storeRequestItems) >= 1)
+
 
                     <div class="overflow-auto rounded-lg shadow">
 
@@ -74,6 +75,7 @@ class="card  bg-gray-300" >
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-300">
+
                                 @foreach ($store_request->storeRequestItems as $item)
 
                                 <tr class="bg-white my-1">
@@ -93,6 +95,12 @@ class="card  bg-gray-300" >
 
                             </tbody>
                         </table>
+
+                        <hr />
+
+                        <a href="{{ route('StoreRequestPrint',['id'=> 2]) }}">
+                            <x-button class="bg-purple-400 m-3  focus:ring-purple-800">Print</x-button>
+                        </a>
                     </div>
 
                     @else

@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\StoreRequestController;
+use App\Models\StoreReuqest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,5 +33,18 @@ Route::resource('items', ItemController::class);
 Route::resource('categories', CategoryController::class);
 
 Route::resource('storeRequest', StoreRequestController::class);
+
+Route::get('storeRequest/print/{id}', function($id){
+
+    $result = StoreReuqest::with(['storeRequestItems'=> function($query){
+        return $query->with(['itemSize' => function($query){
+            return $query->with(['item', 'size']);
+        }]);
+    }])->findOrFail($id);
+
+
+    return view('pages.storeRequest.printRequest',['store_request' => $result]);
+
+})->name('StoreRequestPrint');
 
 require __DIR__.'/auth.php';
