@@ -3,6 +3,7 @@
 
     <x-success></x-success>
 
+        <h1 x-text="$wire.transModalShowStatus"></h1>
 
     <div  class="border border-slate-700 rounded "
                 x-data="{ open2: @entangle('itemSizeFormModal')}"
@@ -13,6 +14,9 @@
         {{-- ADMIN MENU --}}
 
         <div class="flex justify-center">
+
+            @auth
+
 
 
                     <div class="flex justify-center mx-2" >
@@ -29,14 +33,16 @@
                         >
 
                         <x-button class="bg-cyan-500"
-                                x-on:click="transModalShow = true"
+                                x-on:click="$wire.set('transModalShowStatus', true)"
                             > TRANSECTIONS
                         </x-button>
+
+                        {{-- <h1 x-text="$wire.transModalShowStatus"></h1> --}}
 
 
                         {{-- Transection Modal --}}
                             <div
-                            x-show="transModalShow"
+                            x-show="$wire.transModalShowStatus"
                             style="display: none"
                             x-on:keydown.escape.prevent.stop="transModalShow = false"
                             role="dialog"
@@ -48,13 +54,15 @@
 
 
                             {{-- Overlay --}}
-                                <x-modal.overlay status="transModalShow"
-                                x-on:click="transModalShow = false"
+                                <x-modal.overlay
+                                    status="transModalShow"
+                                    x-on:click="transModalShow = false"
                                 ></x-modal.overlay>
 
                                 <!-- Panel -->
                                     <div
-                                        x-show="transModalShow" x-transition
+                                        x-show="transModalShow"
+                                        x-transition
                                         x-on:click="transModalShow = true"
                                         class="relative flex min-h-screen items-center justify-center p-4"
                                     >
@@ -77,6 +85,8 @@
 
 
                     </div>
+
+                     @endauth
 
 
         </div>

@@ -68,9 +68,25 @@
                         <li>
                             <a href="{{ route('storeRequest.index') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">STORE REQUEST</a>
                         </li>
+
+                        @guest
+
                         <li>
-                            <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a>
+                            {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
+                            <a href="{{ route('login') }}" >
+                                <x-button class="bg-green-400">LogIn</x-button>
+                            </a>
                         </li>
+                        @endguest
+
+                        @auth
+
+                        <form action="{{ route('logout') }}" method="POST" class="flex">
+                            @csrf
+                                <x-button class="bg-red-400">LogOut</x-button>
+                        </form>
+
+                        @endauth
                     </ul>
 
                 </nav>

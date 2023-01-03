@@ -32,7 +32,7 @@ Route::resource('items', ItemController::class);
 
 Route::resource('categories', CategoryController::class);
 
-Route::resource('storeRequest', StoreRequestController::class);
+Route::resource('storeRequest', StoreRequestController::class)->middleware('auth');
 
 Route::get('storeRequest/print/{id}', function($id){
 
