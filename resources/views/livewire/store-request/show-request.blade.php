@@ -98,7 +98,7 @@ class="card  bg-gray-300" >
 
                         <hr />
 
-                        <a href="{{ route('StoreRequestPrint',['id'=> $store_request_id]) }}">
+                        <a href="{{ route('StoreRequestPrint',['id'=> $store_request_id]) }}" target="_blank">
                             <x-button class="bg-purple-400 m-3  focus:ring-purple-800">Print</x-button>
                         </a>
                     </div>

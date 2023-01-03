@@ -35,7 +35,7 @@
 
 
     <body class="w-full mx-auto"
-        {{-- onload=window:print(); --}}
+        onload=window:print();
         >
 
 
