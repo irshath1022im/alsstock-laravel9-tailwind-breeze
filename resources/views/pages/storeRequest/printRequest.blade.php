@@ -56,9 +56,6 @@
 
                                           @else
 
-
-
-
                                               <tr class="border-b text-sm">
                                                   <td class="p-2 text-start" ><strong>{{ $i }}</strong></td>
                                                   <td class="p-1 text-start" ></td>
@@ -105,7 +102,7 @@
       </div>
 
     <div class="border mt-2 text-sm">
-         <div class="bg-slate-400 p-2"><strong>STUD DIRECTOR:</strong></div>
+         <div class="bg-slate-400 p-2"><strong>DIRECTOR:</strong></div>
 
          <div class="border-b p-3 flex justify-between text-sm">
 
@@ -143,6 +140,8 @@
 
         <div class="flex justify-center mt-10">
             <img src="/images/bottomLogo.png" class=""/>
+
+
         </div>
 
 
