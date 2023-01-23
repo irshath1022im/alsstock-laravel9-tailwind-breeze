@@ -49,12 +49,16 @@ class="card  bg-gray-300" >
             <div class="card mt-2">
                 <div class="card-header flex ">
                     <div class="card-heading">REQUEST ITEMS </div>
+
+                    @if ($store_request->status !== 'Approved')
+
                     <button
                         x-on:click="open = true"
-                    class="mx-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        class="mx-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
+                        </svg>
                       </button>
+                    @endif
                 </div>
 
                 <div class="card-body">
@@ -71,7 +75,9 @@ class="card  bg-gray-300" >
                                     <th class="p-3 text-sm font-semibold tracking-wide text-left">SIZE</th>
                                     <th class="p-3 text-sm font-semibold tracking-wide text-left">ITEM</th>
                                     <th class="p-3 text-sm font-semibold tracking-wide text-left">QTY</th>
-                                    <th class="p-3 text-sm font-semibold tracking-wide text-left">ACTION</th>
+                                    @if ($store_request->status !== 'Approved')
+                                        <th class="p-3 text-sm font-semibold tracking-wide text-left">ACTION</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-300">
@@ -83,12 +89,16 @@ class="card  bg-gray-300" >
                                     <td class="w-4 p-3 text-sm text-gray-700 whitespace-nowrap">{{ $item->itemSize->size->size }}</td>
                                     <td class="w-15 p-3 text-sm text-gray-700 whitespace-nowrap"> {{ $item->itemSize->item->item }}</td>
                                     <td class="w-4 p-3 text-sm text-gray-700 whitespace-nowrap"><span class="bg-orange-500 px-2 rounded-lg py-1 mt-1">{{ $item->qty }}</span></td>
+
+                                    @if ($store_request->status !== 'Approved')
+
                                     <td class="w-8 p-3 text-sm text-gray-700 whitespace-nowrap">
                                         <x-button class="bg-red-500 text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor" class="w-3 h-3">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                           </svg>
                                           </x-button>
                                     </td>
+                                    @endif
                                 </tr>
 
                                 @endforeach
