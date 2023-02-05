@@ -1,7 +1,18 @@
 <div>
 
+    <div wire:loading>
+
+        <x-spinner></x-spinner>
+    </div>
+
+
     <div
-    x-data="{open : @entangle('newRequestItemForm')}" x-cloak
+    x-data="{
+            newRequestItemForm : @entangle('newRequestItemForm'),
+            deleteItemForm : @entangle('deleteStatusForm')
+
+        }"
+    x-cloak
 class="card  bg-gray-300" >
     <div class="card-header">
         <p class="card-heading">STORE REQUEST # <span>{{ $store_request_id }}</span></p>
@@ -53,7 +64,7 @@ class="card  bg-gray-300" >
                     @if ($store_request->status !== 'Approved')
 
                     <button
-                        x-on:click="open = true"
+                        x-on:click="newRequestItemForm = true"
                         class="mx-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -93,10 +104,17 @@ class="card  bg-gray-300" >
                                     @if ($store_request->status !== 'Approved')
 
                                     <td class="w-8 p-3 text-sm text-gray-700 whitespace-nowrap">
-                                        <x-button class="bg-red-500 text-white"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor" class="w-3 h-3">
+                                        <x-button
+                                            class="bg-red-500 text-white "
+                                            wire:click="openDeleteForm({{ $item->id }})"
+                                            >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor"
+                                                class="w-3 h-3"
+                                            >
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                           </svg>
-                                          </x-button>
+
+                                        </x-button>
                                     </td>
                                     @endif
                                 </tr>
@@ -132,7 +150,7 @@ class="card  bg-gray-300" >
     {{-- modal --}}
 
     <div
-        x-show="open"
+        x-show="newRequestItemForm"
         class="modal"
     >
 
@@ -152,6 +170,43 @@ class="card  bg-gray-300" >
 
 
     </div>
+
+    {{-- End Modal --}}
+
+    {{-- Delete Item Modal --}}
+
+        <div
+        x-show="deleteItemForm"
+        class="modal"
+    >
+
+    {{-- modal overlay --}}
+
+        <div class="modal-overlay">
+
+        </div>
+
+    {{-- modal body --}}
+        <div class="relative flex justify-center  p-4">
+
+            <div class="relative w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-12 shadow-lg">
+
+                Do You Wish to Delete this Request Line ID {{ $selectedLineId }}?
+                    <x-button class="bg-red-600"
+                        wire:click="deleteLineItem"
+                    >Yes</x-button>
+
+                    <x-button class="bg-blue-400"
+                        wire:click="closeModalRequest"
+                    >No</x-button>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    {{-- End Modal --}}
 
 
 

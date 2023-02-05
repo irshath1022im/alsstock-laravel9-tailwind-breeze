@@ -11,6 +11,8 @@ class ShowRequest extends Component
 
     public $store_request_id;
     public $newRequestItemForm = false;
+    public $deleteStatusForm = false;
+    public $selectedLineId;
 
     protected $listeners = ['closeModalRequest'];
 
@@ -18,6 +20,27 @@ class ShowRequest extends Component
     public function closeModalRequest()
     {
         $this->newRequestItemForm = false;
+        $this->deleteStatusForm = false;
+    }
+
+    public function openDeleteForm($itemId)
+    {
+        $this->deleteStatusForm = true;
+        $this->selectedLineId = $itemId;
+    }
+
+    public function deleteLineItem()
+    {
+
+        $result = StoreRequestItem::find($this->selectedLineId)->delete();
+
+        if($result)
+        {
+            $this->closeModalRequest();
+        }
+
+
+
     }
 
     public function mount($store_request_id)
