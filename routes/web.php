@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\StoreRequestController;
 use App\Models\Item;
+use App\Models\Store;
 use App\Models\StoreReuqest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -49,35 +50,37 @@ Route::get('storeRequest/print/{id}', function($id){
 
 })->name('StoreRequestPrint');
 
+
 Route::get('/reports', function(Request $request){
 
     // return $request->has('category');
-    $report_category = null;
+    $report_store = null;
 
-    if($request->query('category') == 'uniforms')
+    if($request->query('store') == 'uniforms')
     {
-         $report_category = 1;
+         $report_store = 1;
     }
 
-    elseif($request->query('category') == 'promotional_items') {
-         $report_category = 2;
+    elseif($request->query('store') == 'promotional_items') {
+         $report_store = 2;
     }
 
 
 
-    $result = Item::with(['itemSize' => function($query){
-                                return $query->with('size','transectionLogs','storeRequestItems')->get();
-                            }])
-                        ->when($request->has('category'), function($query)use($report_category){
-                            return $query->where('category_id', $report_category);
-                            })
-                        ->get();
+    // $result = Item::with(['itemSize' => function($query){
+    //                             return $query->with('size','transectionLogs','storeRequestItems')->get();
+    //                         }])
+    //                     ->when($request->has('category'), function($query)use($report_category){
+    //                         return $query->where('category_id', $report_category);
+    //                         })
+    //                     ->get();
 
+     $result = Store::find($report_store);
     // return $result = Item::with('itemTransectionLogs')->get();
 
 
 
-    return view('pages.reports.uniform', ['items' => $result]);
+    return view('pages.reports.uniform', ['store' => $result]);
 })->name('reports');
 
 require __DIR__.'/auth.php';

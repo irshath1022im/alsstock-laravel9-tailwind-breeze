@@ -22,7 +22,9 @@ onload=window:print();
 
     <div class="h-[100%]  ">
 
-        @foreach ($items as $item)
+        {{-- @dump($store) --}}
+
+        @foreach ($store->items as $item)
 
                 <div class="m-1 h-[48vh] ">
 

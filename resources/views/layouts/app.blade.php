@@ -73,14 +73,14 @@
 
                         <li class="border-white border">
                             {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
-                            <a href="{{ route('reports',['category' => 'uniforms']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
+                            <a href="{{ route('reports',['store' => 'uniforms']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
                                 UNIFORM REPORT
                             </a>
                         </li>
 
                         <li class="border-white border">
                             {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
-                            <a href="{{ route('reports',['category' => 'promotional_items']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
+                            <a href="{{ route('reports',['store' => 'promotional_items']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
                                 PROMOTION ITEMS REPORT
                             </a>
                         </li>
