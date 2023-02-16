@@ -15,10 +15,12 @@
 }
         </style>
 </head>
-<body>
+<body
+onload=window:print();
+>
 
 
-    <div class="h-[100%] ">
+    <div class="h-[100%]  ">
 
         @foreach ($items as $item)
 
@@ -117,13 +119,15 @@
                 </div>
 
             @if ($loop->even)
-            <div class="pagebreak"></div>
+            <div class="pagebreak border"></div>
             @endif
 
   @endforeach
 </div>
 
+    <script>
 
+        </script>
 
 </body>
 </html>

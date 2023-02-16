@@ -71,7 +71,6 @@ Route::get('/reports', function(Request $request){
                         ->when($request->has('category'), function($query)use($report_category){
                             return $query->where('category_id', $report_category);
                             })
-                        ->take(10)
                         ->get();
 
     // return $result = Item::with('itemTransectionLogs')->get();
