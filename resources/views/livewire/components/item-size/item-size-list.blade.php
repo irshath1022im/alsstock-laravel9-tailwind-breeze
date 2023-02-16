@@ -25,6 +25,7 @@
                 >
 
                 {{ $item->size->size }}
+
                     <span class=" inline-flex  justify-center ml-2 w-4 h-4 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
                     {{  $item->transectionLogs->sum('qty') - $item->storeRequestItems->sum('qty') }}
                     </span>

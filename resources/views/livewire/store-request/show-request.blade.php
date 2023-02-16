@@ -9,7 +9,8 @@
     <div
     x-data="{
             newRequestItemForm : @entangle('newRequestItemForm'),
-            deleteItemForm : @entangle('deleteStatusForm')
+            deleteItemForm : @entangle('deleteStatusForm'),
+            editStoreRequestItemModal : @entangle('editStoreRequestItemModal')
 
         }"
     x-cloak
@@ -99,24 +100,40 @@ class="card  bg-gray-300" >
                                     <td class="w-2 p-3 text-sm text-gray-700 whitespace-nowrap">{{ $item->id }}</td>
                                     <td class="w-4 p-3 text-sm text-gray-700 whitespace-nowrap">{{ $item->itemSize->size->size }}</td>
                                     <td class="w-15 p-3 text-sm text-gray-700 whitespace-nowrap"> {{ $item->itemSize->item->item }}</td>
-                                    <td class="w-4 p-3 text-sm text-gray-700 whitespace-nowrap"><span class="bg-orange-500 px-2 rounded-lg py-1 mt-1">{{ $item->qty }}</span></td>
+                                    <td class="w-4 p-3 text-sm text-gray-700 whitespace-nowrap">
+                                        <span class="bg-orange-500 px-2 rounded-lg py-1 mt-1">{{ $item->qty }}</span></td>
 
                                     @if ($store_request->status !== 'Approved')
 
-                                    <td class="w-8 p-3 text-sm text-gray-700 whitespace-nowrap">
-                                        <x-button
-                                            class="bg-red-500 text-white "
-                                            wire:click="openDeleteForm({{ $item->id }})"
-                                            >
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor"
-                                                class="w-3 h-3"
-                                            >
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                          </svg>
+                                        <td class="w-8 p-3 text-sm text-gray-700 whitespace-nowrap">
 
-                                        </x-button>
-                                    </td>
+                                            <x-button
+                                                class="bg-blue-500 text-white"
+                                                wire:click="editStoreRequestItem({{ $item->id }})"
+                                            >
+
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 text-white">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                                </svg>
+                                            </x-button>
+
+
+                                            <x-button
+                                                class="bg-red-500 text-white "
+                                                wire:click="openDeleteForm({{ $item->id }})"
+                                                >
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor"
+                                                    class="w-3 h-3"
+                                                >
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+
+                                            </x-button>
+
+
+                                        </td>
                                     @endif
+
                                 </tr>
 
                                 @endforeach
@@ -207,6 +224,38 @@ class="card  bg-gray-300" >
     </div>
 
     {{-- End Modal --}}
+
+
+
+    {{-- Edit Item Modal --}}
+
+    <div
+    x-show="editStoreRequestItemModal"
+    class="modal"
+>
+
+{{-- modal overlay --}}
+
+    <div class="modal-overlay">
+
+    </div>
+
+{{-- modal body --}}
+    <div class="relative flex justify-center  p-4">
+
+        <div class="relative w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-12 shadow-lg">
+
+            @livewire('store-request.new-store-request-item-form',['store_request_id' => $store_request->id])
+
+
+
+        </div>
+    </div>
+
+
+</div>
+
+{{-- End Modal --}}
 
 
 

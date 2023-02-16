@@ -3,8 +3,10 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\StoreRequestController;
+use App\Models\Item;
 use App\Models\StoreReuqest;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +48,37 @@ Route::get('storeRequest/print/{id}', function($id){
     return view('pages.storeRequest.printRequest',['store_request' => $result]);
 
 })->name('StoreRequestPrint');
+
+Route::get('/reports', function(Request $request){
+
+    // return $request->has('category');
+    $report_category = null;
+
+    if($request->query('category') == 'uniforms')
+    {
+         $report_category = 1;
+    }
+
+    elseif($request->query('category') == 'promotional_items') {
+         $report_category = 2;
+    }
+
+
+
+    $result = Item::with(['itemSize' => function($query){
+                                return $query->with('size','transectionLogs','storeRequestItems')->get();
+                            }])
+                        ->when($request->has('category'), function($query)use($report_category){
+                            return $query->where('category_id', $report_category);
+                            })
+                        ->take(10)
+                        ->get();
+
+    // return $result = Item::with('itemTransectionLogs')->get();
+
+
+
+    return view('pages.reports.uniform', ['items' => $result]);
+})->name('reports');
 
 require __DIR__.'/auth.php';

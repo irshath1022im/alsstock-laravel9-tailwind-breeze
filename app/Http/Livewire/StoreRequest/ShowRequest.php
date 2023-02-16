@@ -13,6 +13,7 @@ class ShowRequest extends Component
     public $newRequestItemForm = false;
     public $deleteStatusForm = false;
     public $selectedLineId;
+    public $editStoreRequestItemModal = false;
 
     protected $listeners = ['closeModalRequest'];
 
@@ -21,6 +22,7 @@ class ShowRequest extends Component
     {
         $this->newRequestItemForm = false;
         $this->deleteStatusForm = false;
+        $this->editStoreRequestItemModal = false;
     }
 
     public function openDeleteForm($itemId)
@@ -41,6 +43,13 @@ class ShowRequest extends Component
 
 
 
+    }
+
+
+    public function editStoreRequestItem($lineId)
+    {
+        $this->selectedLineId = $lineId;
+        $this->editStoreRequestItemModal = true;
     }
 
     public function mount($store_request_id)

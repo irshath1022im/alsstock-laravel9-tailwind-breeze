@@ -51,8 +51,8 @@
                 </span>
 
                 <nav class="">
-                    <ul class="flex-col md:flex md:flex-row ">
-                        <li>
+                    <ul class="flex-col md:flex md:flex-row items-center ">
+                        <li class="border-white border">
                             <a href="/" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">HOME</a>
                         </li>
                         {{-- <li>
@@ -65,15 +65,29 @@
                             <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">ITEMS</a>
                         </li> --}}
 
-                        <li>
+                        <li class="border-white border">
                             <a href="{{ route('storeRequest.index') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">STORE REQUEST</a>
                         </li>
 
                         @guest
 
-                        <li>
+                        <li class="border-white border">
                             {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
-                            <a href="{{ route('login') }}" >
+                            <a href="{{ route('reports',['category' => 'uniforms']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
+                                UNIFORM REPORT
+                            </a>
+                        </li>
+
+                        <li class="border-white border">
+                            {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
+                            <a href="{{ route('reports',['category' => 'promotional_items']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
+                                PROMOTION ITEMS REPORT
+                            </a>
+                        </li>
+
+
+                        <li class="">
+                            <a href="{{ route('login') }}"   class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
                                 <x-button class="bg-green-400">LogIn</x-button>
                             </a>
                         </li>
@@ -81,10 +95,14 @@
 
                         @auth
 
-                        <form action="{{ route('logout') }}" method="POST" class="flex">
-                            @csrf
-                                <x-button class="bg-red-400">LogOut</x-button>
-                        </form>
+                        <div>
+
+                            <form action="{{ route('logout') }}" method="POST" class="flex">
+                                @csrf
+                                    <x-button class="bg-red-400">LogOut</x-button>
+                            </form>
+                        </div>
+
 
                         @endauth
                     </ul>
