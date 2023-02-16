@@ -26,7 +26,7 @@ class ItemList extends Component
 
     public function render()
     {
-        $result = Item::where('category_id', $this->selected_category)->paginate(9);
+        $result = Item::where('category_id', $this->selected_category)->with('category')->paginate(9);
         return view('livewire.components.item-list',['items' => $result]);
     }
 }

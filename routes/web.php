@@ -75,7 +75,11 @@ Route::get('/reports', function(Request $request){
     //                         })
     //                     ->get();
 
-     $result = Store::find($report_store);
+     $result = Store::with(['items' => function($query){
+        return $query->with(['itemSize' => function($query){
+            return $query->with('size','transectionLogs','storeRequestItems')->get();
+        }]);
+     }])->find($report_store);
     // return $result = Item::with('itemTransectionLogs')->get();
 
 

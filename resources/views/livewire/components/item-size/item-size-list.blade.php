@@ -36,7 +36,9 @@
                     wire:click="showLogs({{ $item->id }})"
                     class=" mx-2 p-4 rounded-lg {{  $item->transectionLogs->sum('qty') > 0 ? 'bg-green-500  hover:bg-green-900' : 'bg-slate-400' }}"
                 {{  $item->transectionLogs->sum('qty') > 0 ? null : 'disabled' }}
-            >Logs</button>
+                        >
+                        Logs
+                    </button>
 
                 {{-- <x-button class="{{$item->transectionLogs->sum('qty') > 0 ? 'bg-green-500  hover:bg-green-900' : 'bg-slate-400' }}"
 
