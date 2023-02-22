@@ -14,7 +14,7 @@
 
         {{-- ADMIN MENU --}}
 
-        <div class="flex justify-center">
+        <div class="flex justify-end mr-5">
 
             @auth
 
@@ -100,7 +100,7 @@
 
             <div class="sm:col-span-3 col-span-full border-r border-pink-200 m-1 p-1">
 
-                <h4 class="text-center text-lg uppercase bg-slate-500">{{ $item->item }}</h4>
+                <h4 class="text-center text-lg uppercase bg-slate-300 p-2">{{ $item->item }}</h4>
 
                 <div class="relative p-2 ">
 

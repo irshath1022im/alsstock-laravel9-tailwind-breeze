@@ -8,6 +8,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
 
@@ -44,15 +47,16 @@
         <div class="w-full">
 
 
-            <header class="flex bg-gray-700 text-white item-center  justify-between items-center">
+            <header class="flex bg-gray-700 text-white justify-between items-end  h-[10vh] container mx-auto">
 
-                <span class="text-2xl sm:text-3xl text-white p-3 block font-bold">
-                   ALS STOCK MANAGEMENT
-                </span>
+                <div class=" text-white p-3 font-bold  flex items-center justify-between border-white ">
+                    <span><img src="/images/logo.png" class="w-16 h-16 rounded" /> </span>
+                   <span class="text-2xl sm:text-3xl items-end font-['Righteous'] shadow-gray-200 shadow-md ml-2"> ALS STOCK MANAGEMENT </span>
+                </div>
 
                 <nav class="">
                     <ul class="flex-col md:flex md:flex-row items-center ">
-                        <li class="border-white border">
+                        <li class="border-r">
                             <a href="/" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">HOME</a>
                         </li>
                         {{-- <li>
@@ -65,20 +69,32 @@
                             <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">ITEMS</a>
                         </li> --}}
 
-                        <li class="border-white border">
+                        <li class="border-r">
                             <a href="{{ route('storeRequest.index') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">STORE REQUEST</a>
                         </li>
 
                         @guest
 
-                        <li class="border-white border">
+
+
+                        <li class="block rounded-md px-2">
+                            <a href="{{ route('login') }}">
+                                {{-- <x-button class="bg-green-400">LogIn</x-button> --}}
+                                <span class="bg-green-400 px-4 py-1 rounded text-sm">LOG IN</span>
+                            </a>
+                        </li>
+                        @endguest
+
+                        @auth
+
+                        <li class="border-r">
                             {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
                             <a href="{{ route('reports',['store' => 'uniforms']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
                                 UNIFORM REPORT
                             </a>
                         </li>
 
-                        <li class="border-white border">
+                        <li class="border-r">
                             {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
                             <a href="{{ route('reports',['store' => 'promotional_items']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
                                 PROMOTION ITEMS REPORT
@@ -86,22 +102,14 @@
                         </li>
 
 
-                        <li class="">
-                            <a href="{{ route('login') }}"   class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
-                                <x-button class="bg-green-400">LogIn</x-button>
-                            </a>
-                        </li>
-                        @endguest
-
-                        @auth
-
-                        <div>
+                        <li class="block rounded-md px-2">
 
                             <form action="{{ route('logout') }}" method="POST" class="flex">
                                 @csrf
-                                    <x-button class="bg-red-400">LogOut</x-button>
+                                    {{-- <x-button class="bg-red-400">LogOut</x-button> --}}
+                                    <button class="bg-red-400 px-4 py-1 rounded text-sm">LOG OUT</button>
                             </form>
-                        </div>
+                        </li>
 
 
                         @endauth
