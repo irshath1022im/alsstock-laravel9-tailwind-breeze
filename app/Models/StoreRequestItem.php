@@ -11,7 +11,7 @@ class StoreRequestItem extends Model
 
     protected $fillable = ['store_request_id','item_size_id','qty','remark'];
 
-    public function store_request()
+    public function storeRequest()
     {
         return $this->belongsTo(StoreReuqest::class);
     }

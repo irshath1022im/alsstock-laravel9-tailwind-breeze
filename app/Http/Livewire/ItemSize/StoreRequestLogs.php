@@ -29,7 +29,7 @@ class StoreRequestLogs extends Component
     public function render()
     {
 
-        $results = StoreRequestItem::with('store_request', 'itemSize')
+        $results = StoreRequestItem::with('storeRequest', 'itemSize')
                                         ->where('item_size_id', $this->item_size_id)
 
                                     ->get();

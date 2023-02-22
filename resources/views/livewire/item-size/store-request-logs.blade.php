@@ -41,7 +41,7 @@
 
                     <tr class="bg-gray-100 border-b">
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->id }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->store_request->date }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $log->storeRequest->date }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                             <a href="{{ route('storeRequest.show', ['storeRequest' => $log->store_request_id]) }}" target="_blank" >
                                 {{ $log->store_request_id }} <x-button class="bg-lime-300">view</x-button>

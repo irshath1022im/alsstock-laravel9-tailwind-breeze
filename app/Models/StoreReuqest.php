@@ -22,7 +22,7 @@ class StoreReuqest extends Model
     // }
 
 
-    public function store_request_items()
+    public function storeRequestItems()
     {
         return $this->hasMany(StoreRequestItem::class, 'store_request_id');
     }

@@ -74,14 +74,18 @@
                             <div>
                                 <button type="button"
                                     wire:click="showLogs({{ $item_size->id }})"
-                                    class=" uppercase rounded px-3 py-2 {{  $item_size->transectionLogs->sum('qty') > 0 ? 'bg-violet-400 text-black hover:bg-violet-900' : 'bg-slate-400 text-gray-500' }}"
+                                    class=" uppercase rounded px-3 py-2 {{  $item_size->transectionLogs->sum('qty') > 0 ? 'bg-violet-400 text-black hover:bg-violet-900' : 'bg-slate-400 text-gray-500' }}
+                                        hover:text-white
+                                    "
                             {{  $item_size->transectionLogs->sum('qty') > 0 ? null : 'disabled' }}
                             >
                                     Logs
                                 </button>
 
                                 <button
-                                    class="uppercase rounded px-3 py-2  bg-violet-400 {{ $item_size->storeRequestItems->sum('qty') > 0 ? 'bg-violet-400 text-black hover:bg-violet-900' : 'bg-slate-400 text-gray-500'  }}"
+                                    class="uppercase rounded px-3 py-2  bg-violet-400 {{ $item_size->storeRequestItems->sum('qty') > 0 ? 'bg-violet-400 text-black hover:bg-violet-900   hover:text-white' : 'bg-slate-400 text-gray-500'  }}
+
+                                    "
 
                                     wire:click="getStoreRequestLogs({{ $item_size->id }})"
 
