@@ -9,28 +9,54 @@ class ItemSizeList extends Component
 {
 
     public $item_id;
+    public $item_size_id;
     public $active_id=1;
-    public $showLogsModalStatus = false;
+    public $transLogsModal = false;
+    public $storeRequestLogs = false;
 
 
-    protected $listeners=['itemFormSubmitted'];
+    protected $listeners=['itemFormSubmitted', 'transectionLogsFormClose', 'storeRequestLogsFormClose'];
 
     public function itemFormSubmitted()
     {
 
     }
 
+    public function transectionLogsFormClose()
+    {
+        $this->transLogsModal = false;
+    }
+
+
+    public function storeRequestLogsFormClose()
+    {
+        $this->storeRequestLogs = false;
+    }
+
+
+
     public function showLogs($item_size_id)
     {
 
-        $this->showLogsModalStatus = true;
+        $this->transLogsModal = true;
         $this->emit('getItemSizeTransections', $item_size_id);
+    }
+
+    public function getTransections($item_size_id)
+    {
+        $this->item_size_id = $item_size_id;
+    }
+
+    public function getStoreRequestLogs($item_size_id)
+    {
+        $this->storeRequestLogs = true;
+        $this->item_size_id = $item_size_id;
+        $this->emit('getStoreRequestLogs', $item_size_id);
     }
 
     public function mount($item_id)
     {
-        $this->item_id = $item_id;
-
+        $this->item_id= $item_id;
     }
 
     public function render()

@@ -10,7 +10,7 @@ class ShowItem extends Component
 
     public $item_id;
     public $itemSizeFormModal = false;
-    public $transModalShowStatus = false;
+    public $newTransFormModalStatus = false;
 
     protected $listeners =['formCloseRequest', 'itemFormSubmitted'];
 
@@ -24,7 +24,7 @@ class ShowItem extends Component
     public function formCloseRequest()
     {
         $this->itemSizeFormModal = false;
-        $this->transModalShowStatus = false;
+        $this->newTransFormModalStatus = false;
     }
 
     public function mount($item_id)
@@ -43,7 +43,7 @@ class ShowItem extends Component
             // }]);
         // }])->findOrfail($this->item_id);
 
-        $result = Item::findOrFail($this->item_id);
+        $result = Item::with('itemSize')->findOrFail($this->item_id);
 
         return view('livewire.item.show-item',['item' => $result]);
     }

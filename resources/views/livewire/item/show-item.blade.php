@@ -1,23 +1,22 @@
 <div>
 
-
     <x-success></x-success>
 
-        <h1 x-text="$wire.transModalShowStatus"></h1>
+        <h1 x-text="$wire.newTransFormModalStatus"></h1>
 
     <div  class="border border-slate-700 rounded "
                 x-data="{ open2: @entangle('itemSizeFormModal')}"
         >
 
-        <h5 class="bg-slate-500 py-1 px-2 text-2xl">ITEM : <span class="bg-blue-200  px-2 mx-3 rounded-full text-lg">{{ $item_id }}</span></h5>
+        <h5 class="bg-slate-500 py-1 px-2 text-2xl">ITEM :
+            <span class="bg-blue-200  px-2 mx-3 rounded-full text-lg">{{ $item_id }}</span>
+        </h5>
 
         {{-- ADMIN MENU --}}
 
         <div class="flex justify-center">
 
             @auth
-
-
 
                     <div class="flex justify-center mx-2" >
                         <x-button class="bg-orange-200"
@@ -29,11 +28,11 @@
 
 
                     <div class="flex justify-center"
-                        x-data="{ transModalShow: @entangle('transModalShowStatus')}"
+                        x-data="{ newTransFormModalStatus: @entangle('newTransFormModalStatus')}"
                         >
 
                         <x-button class="bg-cyan-500"
-                                x-on:click="$wire.set('transModalShowStatus', true)"
+                                x-on:click="$wire.set('newTransFormModalStatus', true)"
                             > TRANSECTIONS
                         </x-button>
 
@@ -42,9 +41,9 @@
 
                         {{-- Transection Modal --}}
                             <div
-                            x-show="$wire.transModalShowStatus"
+                            x-show="$wire.newTransFormModalStatus"
                             style="display: none"
-                            x-on:keydown.escape.prevent.stop="transModalShow = false"
+                            x-on:keydown.escape.prevent.stop="newTransFormModalStatus = false"
                             role="dialog"
                             aria-modal="true"
                             x-id="['modal-title2']"
@@ -55,21 +54,21 @@
 
                             {{-- Overlay --}}
                                 <x-modal.overlay
-                                    status="transModalShow"
-                                    x-on:click="transModalShow = false"
+                                    status="newTransFormModalStatus"
+                                    x-on:click="newTransFormModalStatus = false"
                                 ></x-modal.overlay>
 
                                 <!-- Panel -->
                                     <div
-                                        x-show="transModalShow"
+                                        x-show="newTransFormModalStatus"
                                         x-transition
-                                        x-on:click="transModalShow = true"
+                                        x-on:click="newTransFormModalStatus = true"
                                         class="relative flex min-h-screen items-center justify-center p-4"
                                     >
 
                                             <div
                                             x-on:click.stop
-                                            x-trap.noscroll.inert="transModalShow"
+                                            x-trap.noscroll.inert="newTransFormModalStatus"
                                             class="relative w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-12 shadow-lg"
                                         >
                                             <!-- Title -->
@@ -126,9 +125,22 @@
 
 
 
-            <div class="sm:col-span-9 col-span-full m-1 p-1">
+            <div class="col-span-9 border-r border-pink-200 m-1 p-1">
 
-                @livewire('components.item-size.item-size-list',['item_id' => $item_id])
+
+                @if (count($item->itemSize) > 0)
+
+                 @livewire('components.item-size.item-size-list',['item_id' => $item_id])
+
+                @else
+
+
+                <div class="px-3 border-2 bg-orange-200 rounded py-3 text-center font-bold">
+                    No Item Sizes are Found !!!
+                </div>
+
+                @endif
+
 
             </div>
 
@@ -151,7 +163,7 @@
             class="fixed inset-0 z-10 overflow-y-auto">
 
 
-        {{-- Overlay --}}
+            {{-- Overlay --}}
             <x-modal.overlay status="open2"></x-modal.overlay>
 
               <!-- Panel -->
@@ -183,6 +195,10 @@
 
 
     </div>
+
+
+
+
 
 
 

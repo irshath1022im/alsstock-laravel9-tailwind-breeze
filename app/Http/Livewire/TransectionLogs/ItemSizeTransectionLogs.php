@@ -20,6 +20,11 @@ class ItemSizeTransectionLogs extends Component
         $this->item_size_id = $item_size_id;
     }
 
+    public function formClose()
+    {
+        $this->emit('transectionLogsFormClose');
+    }
+
 
     public function render()
     {
