@@ -69,6 +69,8 @@
                                 </div>
                         </div>
 
+                        @auth
+
                         <div class="col-span-2  flex justify-between px-2 py-1 text-sm bg rounded ">
 
                             <div>
@@ -98,6 +100,8 @@
                             </div>
 
                         </div>
+                        @endauth
+
 
 
 
