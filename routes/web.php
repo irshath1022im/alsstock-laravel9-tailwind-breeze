@@ -50,6 +50,11 @@ Route::get('storeRequest/print/{id}', function($id){
 
 })->name('StoreRequestPrint');
 
+Route::get('approvedStoreRequest/print/{id}', function($id){
+
+    return view('pages.storeRequest.approvedPdf',['pdf_id' => $id]);
+
+})->name('approvedPdf');
 
 Route::get('/reports', function(Request $request){
 
@@ -88,3 +93,6 @@ Route::get('/reports', function(Request $request){
 })->name('reports');
 
 require __DIR__.'/auth.php';
+
+
+Route::get('admin', [ItemController::class, 'index'])->middleware('auth');

@@ -12,3 +12,8 @@
     ** CREATE FORM TO ADD ITEM SIZE AND EDIT
 
 ## 12-08-2022 ADD TRANSECTIONS
+
+
+## 04-27-2023
+    * Added isAdmin Column to Users Table
+    

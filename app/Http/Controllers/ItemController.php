@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ItemController extends Controller
 {
@@ -15,6 +17,9 @@ class ItemController extends Controller
     public function index()
     {
         //
+
+        // Gate::allows('isAdmin') ? Response::allow(): Response::deny('You must be an Administrator');
+
         return view('pages.item.index');
     }
 

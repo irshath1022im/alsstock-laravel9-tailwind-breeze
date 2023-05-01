@@ -10,7 +10,7 @@
     <div class=" border-gray-200 border-2 p-2 rounded-xl">
 
         <div class="mb-1">
-            <h5 class="bg-blue-700 text-center text-sm uppercase text-white p-3 rounded-md">{{ $item->item }}E</h5>
+            <h5 class="bg-blue-700 text-center text-sm uppercase text-white p-3 rounded-md">{{ $item->item }}</h5>
         </div>
 
         <div class="h-60">
