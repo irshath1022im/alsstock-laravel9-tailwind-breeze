@@ -7,6 +7,9 @@
             @endcomponent
         </div>
 
+        <div>
+            New Item
+        </div>
 
         <div wire:loading.remove>
 

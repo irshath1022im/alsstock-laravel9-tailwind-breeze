@@ -4,6 +4,10 @@
 
 
 @layer components {
+
+    .card-group {
+        @apply border rounded-md font-['lato']
+    }
     .card {
         @apply bg-slate-50  border rounded-md;
     }
@@ -12,7 +16,7 @@
         @apply px-3 py-2  border-b-2;
     }
     .card-heading{
-        @apply text-xl font-medium;
+        @apply text-lg font-bold uppercase;
     }
 
     .card-body{
@@ -20,10 +24,9 @@
     }
 
     .card-footer{
-        @apply bg-slate-50 font-semibold px-3 py-2 border-2 rounded-md;
+        @apply font-semibold px-3 py-2 border-2 rounded-md;
     }
 }
-
 
 @layer components {
 

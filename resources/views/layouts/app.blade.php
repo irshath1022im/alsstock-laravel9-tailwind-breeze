@@ -89,6 +89,13 @@
 
                         <li class="border-r">
                             {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
+                            <a href="{{ route('items.create') }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
+                                NEW ITEM
+                            </a>
+                        </li>
+
+                        <li class="border-r">
+                            {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
                             <a href="{{ route('reports',['store' => 'uniforms']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
                                 UNIFORM REPORT
                             </a>
