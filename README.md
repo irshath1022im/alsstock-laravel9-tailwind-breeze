@@ -16,4 +16,6 @@
 
 ## 04-27-2023
     * Added isAdmin Column to Users Table
-    
+
+## NOV 15, 2023
+    *DISPLAY 10 ITEMS IN STORE REQUEST PAGE

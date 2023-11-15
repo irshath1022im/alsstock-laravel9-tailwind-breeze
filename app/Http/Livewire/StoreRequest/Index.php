@@ -34,7 +34,7 @@ class Index extends Component
 
     public function render()
     {
-        $result = StoreReuqest::OrderByDesc('date')->paginate(3);
+        $result = StoreReuqest::OrderByDesc('date')->paginate(10);
         return view('livewire.store-request.index',['store_requests' => $result]);
     }
 

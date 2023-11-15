@@ -44,17 +44,18 @@
 
                     @foreach ($store_requests as $item)
 
-                    <ul class="flex justify-between p-3 mb-3 uppercase bg-orange-50 text-sm font-normal ">
-                        <li class="border-r-2 flex-1 p-2">{{ $item->date }}</li>
+                    <ul class="flex justify-between mb-1 uppercase bg-orange-50 bg-opacity-20  text-sm font-normal text-left items-center ">
+                        <li class="border-r-2 flex-1 p-2 ">{{ $item->date }}</li>
                         <li class="border-r-2 flex-1 p-2">{{ $item->requestedBy }}</li>
                         <li class="border-r-2 flex-1 p-2">{{ $item->approvedBy }}</li>
                         <li class="border-r-2 flex-1 p-2">{{ $item->status }}</li>
-                        <li class="border-r-2 flex-1 p-2">{{ $item->remark }}</li>
-                        <div class="flex flex-col text-sm flex-1 p-2">
+                        <li class="border-r-2 flex-1 p-2 text-xs">{{ $item->remark }}</li>
+                        <div class="flex text-sm flex-1 p-2 justify-end">
 
                             {{-- <button class="border p-2 bg-sky-600">ITEMS</button> --}}
-                            <a href="{{ route('storeRequest.show',['storeRequest' => $item->id]) }}"><x-button class="bg-blue-400">VIEW</x-button></a>
-                            <x-button class="bg-red-400" wire:click="openUpdateForm({{ $item->id }})">Edit</x-button>
+                            <a href="{{ route('storeRequest.show',['storeRequest' => $item->id]) }}">
+                                <x-button class="bg-blue-400">VIEW</x-button></a>
+                            <x-button class="bg-red-400 ml-1" wire:click="openUpdateForm({{ $item->id }})">Edit</x-button>
                         </div>
                     </ul>
 
