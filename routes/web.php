@@ -3,6 +3,8 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\StoreRequestController;
+use App\Http\Livewire\Pages\StockSummaryReport2;
+use App\Http\Livewire\Pages\StockSummaryReport3;
 use App\Models\Item;
 use App\Models\Store;
 use App\Models\StoreReuqest;
@@ -91,6 +93,9 @@ Route::get('/reports', function(Request $request){
 
     return view('pages.reports.uniform', ['store' => $result]);
 })->name('reports');
+
+
+Route::get('reports/summary', StockSummaryReport3::class );
 
 require __DIR__.'/auth.php';
 

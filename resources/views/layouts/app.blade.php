@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>ALS STOCK </title>
+        <title class="print:hidden">ALS STOCK </title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -28,7 +28,24 @@
             [x-cloak] {
            display: none !important;
         }
-         </style>
+
+
+       @media print {
+
+                * {
+                        display:block;
+                    }
+                    script, style {
+                        display:none;
+                    }
+                    .pageBreadDiv {
+                        page-break-inside:avoid;
+                    }
+
+
+            }
+
+        </style>
 
         @livewireStyles
 
@@ -54,7 +71,7 @@
                    <span class="text-2xl sm:text-3xl items-end font-['Righteous'] shadow-gray-200 shadow-md ml-2"> ALS STOCK MANAGEMENT </span>
                 </div>
 
-                <nav class="">
+                <nav class="print:hidden">
                     <ul class="flex-col md:flex md:flex-row items-center ">
                         <li class="border-r">
                             <a href="/" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">HOME</a>
