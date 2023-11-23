@@ -48,7 +48,7 @@
                                 </div>
 
                                 <div class="ml-5 flex justify-end">
-                                    10
+                                    <span>{{ $subItem->transectionLogs->sum('qty') -  $subItem->storeRequestItems->sum('qty') }}</span></td>
                                 </div>
                             </div>
                         @endforeach
