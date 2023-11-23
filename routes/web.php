@@ -95,7 +95,7 @@ Route::get('/reports', function(Request $request){
 })->name('reports');
 
 
-Route::get('reports/summary', StockSummaryReport3::class );
+Route::get('reports/summary', StockSummaryReport3::class )->name('reportSummary');
 
 require __DIR__.'/auth.php';
 

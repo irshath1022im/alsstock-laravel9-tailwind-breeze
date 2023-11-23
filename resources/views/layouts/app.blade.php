@@ -64,7 +64,7 @@
         <div class="w-full">
 
 
-            <header class="flex bg-gray-700 text-white justify-between items-end  h-[10vh] container mx-auto">
+            <header class="flex bg-gray-700 text-white justify-between items-end  h-[10vh] container mx-auto ">
 
                 <div class=" text-white p-3 font-bold  flex items-center justify-between border-white ">
                     <span><img src="/images/logo.png" class="w-16 h-16 rounded" /> </span>
@@ -122,6 +122,13 @@
                             {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
                             <a href="{{ route('reports',['store' => 'promotional_items']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
                                 PROMOTION ITEMS REPORT
+                            </a>
+                        </li>
+
+                        <li class="border-r">
+                            {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
+                            <a href="{{ route('reportSummary') }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
+                                SUMMARY
                             </a>
                         </li>
 
