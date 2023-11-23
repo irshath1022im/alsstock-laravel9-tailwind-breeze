@@ -20,7 +20,7 @@
                     <h3>UNIFORMS</h3>
                 @else
 
-                <h3>PROMOTINAL ITEMS</h3>
+                <h3>promotional items</h3>
                 @endif
             </div>
         </div>
@@ -47,7 +47,7 @@
                                 {{ $subItem->size->size }}
                                 </div>
 
-                                <div class="ml-5 flex justify-end">
+                                <div class="ml-5 flex justify-end print:text-xs">
                                     <span>{{ $subItem->transectionLogs->sum('qty') -  $subItem->storeRequestItems->sum('qty') }}</span></td>
                                 </div>
                             </div>
