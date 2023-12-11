@@ -5,6 +5,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\StoreRequestController;
 use App\Http\Livewire\Pages\StockSummaryReport2;
 use App\Http\Livewire\Pages\StockSummaryReport3;
+use App\Http\Livewire\Pages\StoreHome;
 use App\Models\Item;
 use App\Models\Store;
 use App\Models\StoreReuqest;
@@ -32,10 +33,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('items', ItemController::class);
 
+
+Route::get('stores', StoreHome::class)->name('stores');
 
 Route::resource('categories', CategoryController::class);
+
+Route::resource('items', ItemController::class);
 
 Route::resource('storeRequest', StoreRequestController::class)->middleware('auth');
 
@@ -101,3 +105,11 @@ require __DIR__.'/auth.php';
 
 
 Route::get('admin', [ItemController::class, 'index'])->middleware('auth');
+
+Route::get('test', function(){
+   $result = Store::with(['category' => function ($query){
+        return $query->with('items');
+    }])->get();
+
+
+});

@@ -54,107 +54,37 @@
 
 
 
-    <body class="">
+    <body class=" h-screen m-auto bg-gradient-to-b from-blue-600 to-purple-800">
 
+        <div class="AdminHome w-[90%] h-full m-auto flex">
 
+            <div class="Rectangle1 w-80 h-full bg-gradient-to-b from-violet-950 to-black">
 
+                <div class="flex justify-center pt-6">
 
-        {{-- @include('navigation') --}}
-
-        <div class="w-full">
-
-
-            <header class="flex bg-gray-700 text-white justify-between items-end  h-[10vh] container mx-auto ">
-
-                <div class=" text-white p-3 font-bold  flex items-center justify-between border-white ">
-                    <span><img src="/images/logo.png" class="w-16 h-16 rounded" /> </span>
-                   <span class="text-2xl sm:text-3xl items-end font-['Righteous'] shadow-gray-200 shadow-md ml-2"> ALS STOCK MANAGEMENT </span>
+                    <img class="AlShahaniaWhiteLogo1 w-45 h-32" src="/images/AlShahaniaWhiteLogo1.png" />
                 </div>
 
-                <nav class="print:hidden">
-                    <ul class="flex-col md:flex md:flex-row items-center ">
-                        <li class="border-r">
-                            <a href="/" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">HOME</a>
-                        </li>
-                        {{-- <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">STORE</a>
-                        </li> --}}
-                        {{-- <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">CATEGORIES</a>
-                        </li> --}}
-                        {{-- <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">ITEMS</a>
-                        </li> --}}
+                <div class="Group1 mt-10 ml-5 p-5 ">
+                    <div class="Home  text-white text-base font-bold p-3 font-['lato']">HOME</div>
+                    <div class="Store  text-white text-base font-bold  p-3 font-['lato']">STORE</div>
+                    <div class="Category  text-white text-base font-bold p-3 font-['lato']">CATEGORY</div>
+                    <div class="Items  text-white text-base font-bold p-3 font-['lato']">ITEMS</div>
+                    <div class="StoreRequests  text-white text-base font-bold  p-3 font-['lato']">STORE REQUESTS</div>
+                    <div class="Reports  text-white text-base font-bold p-3 font-['lato']">REPORTS</div>
+                </div>
 
-                        <li class="border-r">
-                            <a href="{{ route('storeRequest.index') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">STORE REQUEST</a>
-                        </li>
-
-                        @guest
+            </div>
 
 
-
-                        <li class="block rounded-md px-2">
-                            <a href="{{ route('login') }}">
-                                {{-- <x-button class="bg-green-400">LogIn</x-button> --}}
-                                <span class="bg-green-400 px-4 py-1 rounded text-sm">LOG IN</span>
-                            </a>
-                        </li>
-                        @endguest
-
-                        @auth
-
-                        <li class="border-r">
-                            {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
-                            <a href="{{ route('items.create') }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
-                                NEW ITEM
-                            </a>
-                        </li>
-
-                        <li class="border-r">
-                            {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
-                            <a href="{{ route('reports',['store' => 'uniforms']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
-                                UNIFORM REPORT
-                            </a>
-                        </li>
-
-                        <li class="border-r">
-                            {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
-                            <a href="{{ route('reports',['store' => 'promotional_items']) }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
-                                PROMOTION ITEMS REPORT
-                            </a>
-                        </li>
-
-                        <li class="border-r">
-                            {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
-                            <a href="{{ route('reportSummary') }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
-                                SUMMARY
-                            </a>
-                        </li>
-
-
-                        <li class="block rounded-md px-2">
-
-                            <form action="{{ route('logout') }}" method="POST" class="flex">
-                                @csrf
-                                    {{-- <x-button class="bg-red-400">LogOut</x-button> --}}
-                                    <button class="bg-red-400 px-4 py-1 rounded text-sm">LOG OUT</button>
-                            </form>
-                        </li>
-
-
-                        @endauth
-                    </ul>
-
-                </nav>
-            </header>
+            <div class="container p-2 mx-auto">
+                @yield('content')
+            </div>
 
         </div>
 
 
-        <div class=" md:container mx-auto mt-3">
-            @yield('content')
-        </div>
+
 
 
 
