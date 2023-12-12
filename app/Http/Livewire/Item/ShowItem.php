@@ -27,9 +27,9 @@ class ShowItem extends Component
         $this->newTransFormModalStatus = false;
     }
 
-    public function mount($item_id)
+    public function mount($id)
     {
-        $this->item_id = $item_id;
+        $this->item_id = $id;
     }
 
     public function render()
@@ -45,6 +45,7 @@ class ShowItem extends Component
 
         $result = Item::with('itemSize')->findOrFail($this->item_id);
 
-        return view('livewire.item.show-item',['item' => $result]);
+        return view('livewire.item.show-item',['item' => $result])
+                ->extends('layouts.app');
     }
 }

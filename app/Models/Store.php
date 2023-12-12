@@ -14,22 +14,13 @@ class Store extends Model
         return $this->hasMany(Category::class);
     }
 
-    // public function items()
-    // {
-    //     return $this->hasManyThrough(
-    //             Item::class,
-    //             Category::class,
-
-    //     );
-
-    // }
 
     public function items(){
         return $this->hasManyThrough(
-                Item::class,
-               Category::class,
-               'store_id',
-               'category_id',
+                Item::class,  //grap the data from item table
+                Category::class, //using category tablel
+               'store_id',    // store_id in category table
+               'category_id', // category_id in item table
                'id'
         );
     }

@@ -3,6 +3,8 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\StoreRequestController;
+use App\Http\Livewire\Item\ShowItem;
+use App\Http\Livewire\Pages\ItemHome;
 use App\Http\Livewire\Pages\StockSummaryReport2;
 use App\Http\Livewire\Pages\StockSummaryReport3;
 use App\Http\Livewire\Pages\StoreHome;
@@ -39,7 +41,10 @@ Route::get('stores', StoreHome::class)->name('stores');
 
 Route::resource('categories', CategoryController::class);
 
-Route::resource('items', ItemController::class);
+// Route::resource('items', ItemController::class);
+
+Route::get('items', ItemHome::class)->name('itemHome');
+Route::get('items/{id}', ShowItem::class)->name('singleItem');
 
 Route::resource('storeRequest', StoreRequestController::class)->middleware('auth');
 

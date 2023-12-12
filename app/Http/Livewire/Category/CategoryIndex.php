@@ -29,7 +29,7 @@ class CategoryIndex extends Component
 
     public function render()
     {
-        $result = Category::get();
+        $result = Category::with('store','items')->get();
         return view('livewire.category.category-index',['categories' => $result]);
     }
 }

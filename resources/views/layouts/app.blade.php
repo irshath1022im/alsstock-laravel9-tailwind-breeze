@@ -66,10 +66,22 @@
                 </div>
 
                 <div class="Group1 mt-10 ml-5 p-5 ">
+                    <a href="/">
                     <div class="Home  text-white text-base font-bold p-3 font-['lato']">HOME</div>
-                    <div class="Store  text-white text-base font-bold  p-3 font-['lato']">STORE</div>
-                    <div class="Category  text-white text-base font-bold p-3 font-['lato']">CATEGORY</div>
-                    <div class="Items  text-white text-base font-bold p-3 font-['lato']">ITEMS</div>
+                    </a>
+
+                   <a href="{{ route('stores') }}">
+                     <div class="Store  text-white text-base font-bold  p-3 font-['lato']">STORE</div>
+                   </a>
+
+                   <a href="{{ route('categories.index') }}">
+                     <div class="Category  text-white text-base font-bold p-3 font-['lato']">CATEGORY</div>
+                   </a>
+
+                   <a href="{{ route('itemHome') }}">
+                     <div class="Items  text-white text-base font-bold p-3 font-['lato']">ITEMS</div>
+                   </a>
+
                     <div class="StoreRequests  text-white text-base font-bold  p-3 font-['lato']">STORE REQUESTS</div>
                     <div class="Reports  text-white text-base font-bold p-3 font-['lato']">REPORTS</div>
                 </div>

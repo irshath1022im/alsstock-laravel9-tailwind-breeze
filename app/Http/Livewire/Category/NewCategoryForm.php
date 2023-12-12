@@ -64,6 +64,7 @@ class NewCategoryForm extends Component
 
         $this->resetExcept('stores');
         session()->flash('created', 'Category is Added...');
+
     // $this->closeModal();
     }
 
