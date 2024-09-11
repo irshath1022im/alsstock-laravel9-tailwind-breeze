@@ -19,10 +19,11 @@
             </a>
         </div>
 
+
+
         <div class="mt-1 flex justify-between">
             <a href="{{ route('items.show',['item' => $item->id]) }}" target="_blank" >
                 <x-button class="bg-orange-100 border-orange-300 focus:ring ring-orange-500">View More </x-button>
-                {{-- <button class="rounded border-red-500 border-2 p-1">View More</button> --}}
             </a>
             <x-button class="bg-gray-100 border-blue-300 focus:ring ring-blue-500">{{ $item->category->category }} </x-button>
 

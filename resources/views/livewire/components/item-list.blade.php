@@ -8,7 +8,7 @@
         </div>
 
         <div>
-            New Item
+           <x-button class="btn-blue opacity-60">New Item</x-button>
         </div>
 
         <div wire:loading.remove>
