@@ -1,4 +1,17 @@
 <div class="text-white">
+
+    <div class="flex justify-end">
+
+        <select name="" id="" class="text-red-500" wire:model="filterBy">
+            <option value="">SELECT</option>
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->category }}</option>
+
+            @endforeach
+
+        </select>
+    </div>
+
     <div class="Rectangle2  bg-white flex items-center p-3 mt-5">
         <div class="  text-black text-base font-bold font-['lato'] basis-[10%] " >#</div>
         <div class="Store  text-black text-base font-bold font-['lato']  basis-[50%] ">ITEM</div>
@@ -27,4 +40,16 @@
         @endforeach
 
        <div class="text-white"> {{ $items->links() }}</div>
+
+
+
+
+
+
+
+
+
+
+
+
 </div>

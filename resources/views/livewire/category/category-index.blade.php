@@ -21,8 +21,8 @@
 
             <div class="Rectangle2  bg-white flex items-center p-3 ">
                 <div class="  text-black text-base font-bold font-['lato'] basis-1/4 " >#</div>
-                <div class="Store  text-black text-base font-bold font-['lato']  basis-1/4 ">STORE</div>
-                <div class="Categoryies  text-black text-base font-bold font-['lato'] basis-1/4  ">CATEGORYIES</div>
+                <div class="Store  text-black text-base font-bold font-['lato']  basis-1/4 ">CATEGORY</div>
+                <div class="Categoryies  text-black text-base font-bold font-['lato'] basis-1/4  ">STORE</div>
                 <div class="Items  text-black text-base font-bold font-['lato']  basis-1/4 ">ITEMS</div>
             </div>
 
