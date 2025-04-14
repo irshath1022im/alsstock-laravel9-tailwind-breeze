@@ -39,7 +39,8 @@ class ItemSearchBar extends Component
         {
 
             $search_value = preg_replace("/[^A-Za-z0-9 ]/", '', $this->search_value);
-            $result = Item::where('item', 'like','%'.$search_value.'%' )->take(3)->get();
+            // $result = Item::where('item', 'like','%'.$search_value.'%' )->take(3)->get(); //disabled for pagination option
+            $result = Item::where('item', 'like','%'.$search_value.'%' )->get();
 
             // dump($result);
             if(count($result) > 0)
