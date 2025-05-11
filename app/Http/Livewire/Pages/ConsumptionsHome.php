@@ -11,8 +11,9 @@ use Illuminate\Database\Eloquent\Builder;
 class ConsumptionsHome extends Component
 {
 
-    public $startDate = '2022-01-01';
-    public $endDate = '2022-12-30';
+    public $startDate = '2023-01-01';
+    public $endDate ='2023-01-30';
+    public $totalRows;
 
 
     public function render()
@@ -25,7 +26,10 @@ class ConsumptionsHome extends Component
 
     $results = StoreRequestItem::query()
                     ->whereHas('storeRequest', function($q){
-                        $q->whereBetween('date', [$this->startDate, $this->endDate]);
+                        $q->when($this->startDate || $this->endDate, function($w){
+                            return $w -> whereBetween('date', [$this->startDate, $this->endDate]);
+                        });
+
                     })
                     ->with(['storeRequest', 'itemSize'=>function($q){
                         return $q->with(['item'=>function($q){
@@ -33,6 +37,8 @@ class ConsumptionsHome extends Component
                         }, 'size']);
                     }])
                     ->get();
+
+    $this->totalRows = $results->count();
 
 
         return view('livewire.pages.consumptions-home',['storeRequestItems' => $results])

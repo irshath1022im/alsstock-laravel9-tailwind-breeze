@@ -111,12 +111,11 @@
                             </a>
                         </li>
 
-                        <li class="border-r">
-                            {{-- <a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">LOGIN</a> --}}
+                        {{-- <li class="border-r">
                             <a href="{{ route('items.create') }}" target="_blank" class="block px-4 py-2 hover:bg-indigo-800 rounded-md">
                                 CONSUMPTIONS
                             </a>
-                        </li>
+                        </li> --}}
 
 
                         <li class="border-r">

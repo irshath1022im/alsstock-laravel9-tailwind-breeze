@@ -17,6 +17,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
+
         <!-- Alpine Core -->
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -28,6 +29,17 @@
             [x-cloak] {
            display: none !important;
         }
+
+        .table-tr{
+            margin-top: 5px;
+            border-bottom: 1px solid rgb(210, 210, 224);
+        }
+
+        .btn-info {
+            padding:0 5px 0 5px;
+            margin: 2px;
+            border-radius: 10px;
+        }
          </style>
 
         @livewireStyles
@@ -37,7 +49,7 @@
 
 
 
-    <body class="w-[90%] mx-auto bg-gray-700"
+    <body class="w-[90%] mx-auto bg-gray-700 mt-3"
         {{-- onload=window:print(); --}}
         >
 
