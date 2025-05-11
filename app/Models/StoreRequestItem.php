@@ -13,7 +13,7 @@ class StoreRequestItem extends Model
 
     public function storeRequest()
     {
-        return $this->belongsTo(StoreReuqest::class);
+        return $this->belongsTo(StoreReuqest::class, 'store_request_id');
     }
 
     // each request item belogs to item_size_id

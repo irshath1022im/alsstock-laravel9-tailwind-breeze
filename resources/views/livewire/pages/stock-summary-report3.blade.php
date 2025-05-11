@@ -29,8 +29,6 @@
 
             @foreach ($store->items as $item)
 
-
-
                 <div class="card mb-2 pageBreadDiv">
                     <div class="card-header">
                         <div class="card-heading print:text-xs">
@@ -66,10 +64,6 @@
                 {{-- <div class="pagebreak"></div> --}}
 
                 @endforeach
-
-
-
-
 
         </div>
     </div>

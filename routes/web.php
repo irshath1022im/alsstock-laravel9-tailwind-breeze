@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\StoreRequestController;
+use App\Http\Livewire\Pages\ConsumptionsHome;
 use App\Http\Livewire\Pages\StockSummaryReport2;
 use App\Http\Livewire\Pages\StockSummaryReport3;
 use App\Models\Item;
@@ -60,39 +61,40 @@ Route::get('approvedStoreRequest/print/{id}', function($id){
 
 Route::get('/reports', function(Request $request){
 
-    // return $request->has('category');
-    $report_store = null;
 
-    if($request->query('store') == 'uniforms')
-    {
-         $report_store = 1;
-    }
-
-    elseif($request->query('store') == 'promotional_items') {
-         $report_store = 2;
-    }
+    return view('pages.reports.home');
+})->name('reports');
 
 
+Route::get('/reports/uniforms', function(Request $request){
 
-    // $result = Item::with(['itemSize' => function($query){
-    //                             return $query->with('size','transectionLogs','storeRequestItems')->get();
-    //                         }])
-    //                     ->when($request->has('category'), function($query)use($report_category){
-    //                         return $query->where('category_id', $report_category);
-    //                         })
-    //                     ->get();
 
      $result = Store::with(['items' => function($query){
         return $query->with(['itemSize' => function($query){
             return $query->with('size','transectionLogs','storeRequestItems')->get();
         }]);
-     }])->find($report_store);
+     }])->find(1);
     // return $result = Item::with('itemTransectionLogs')->get();
 
 
 
     return view('pages.reports.uniform', ['store' => $result]);
-})->name('reports');
+})->name('uniformReports');
+
+Route::get('/reports/promotionalItems', function(Request $request){
+
+
+    $result = Store::with(['items' => function($query){
+       return $query->with(['itemSize' => function($query){
+           return $query->with('size','transectionLogs','storeRequestItems')->get();
+       }]);
+    }])->find(2);
+
+
+   return view('pages.reports.uniform', ['store' => $result]);
+})->name('promotionalItemsReports');
+
+Route::get('repots/consumptionReport', ConsumptionsHome::class)->name('consumptionPage');
 
 
 Route::get('reports/summary', StockSummaryReport3::class )->name('reportSummary');
