@@ -957,9 +957,6 @@ select {
 .table {
   width: 100%;
 }
-.table-md {
-  width: 80%;
-}
 .table-head {
   border-bottom-width: 2px;
   --tw-border-opacity: 1;

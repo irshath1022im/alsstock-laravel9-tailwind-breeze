@@ -34,6 +34,8 @@ class Item extends Model
             'item_size_id',
             'id'
         );
+
+        
     }
 
 

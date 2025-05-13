@@ -16,36 +16,45 @@
 
         <div class="">
 
-            {{-- @dump($storeRequestItems) --}}
+            @dump($storeRequestItemsGrouped)
+{{-- {{ $storeRequestItemsGrouped }} --}}
+
+
+            {{-- {{ $storeRequestItemsGrouped->dd() }} --}}
+
+
+            {{-- @dump($storeRequestItems->groupBy('itemSize')) --}}
             {{-- <div>{{ $item->id }}</div> --}}
+
+
 
         <div class="table-overflow">
                 <table class="table">
                     <th class="table-th">#</th>
-                    <th class="table-th">Date</th>
-                    <th class="table-th">CATEGORY</th>
+                    <th class="table-th">ITEM ID</th>
                     <th class="table-th">ITEM</th>
-                    <th class="table-th">SIZE</th>
+                    <th class="table-th">ITEM SIZE ID</th>
+                    <th class="table-th">ITEM SIZE</th>
                     <th class="table-th">QTY</th>
-                <tbody>
-                    @foreach ($storeRequestItems as $item)
-                    {{-- {{ $item }} --}}
-                        <tr class="table-tr">
-                            <td class="table-td">{{ $loop->iteration}}</td>
-                            <td class="table-td">{{ $item->storeRequest->date}}</td>
-                            <td class="table-td">{{ $item->itemSize->item->category->category}}</td>
-                            <td class="table-td">{{ $item->itemSize->item->item}}</td>
-                            <td class="table-td">{{ $item->itemSize->size->size}}</td>
-                            <td class="table-td">{{ $item->qty }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-                {{-- <tfoot>
-                    <tr>
-                        <td class="no-border">&nbsp;</td>
-                    </tr>
 
-                </tfoot> --}}
+                <tbody>
+
+                        {{-- @foreach ($storeRequestItemsGrouped as $storeRequestItem) --}}
+
+
+                                {{-- <tr>
+                                    <td class="table-td">{{ $loop->iteration}}</td>
+                                    <td class="table-td">{{ $storeRequestItem[0]->itemSize->item->id }}</td>
+                                    <td class="table-td">{{ $storeRequestItem[0]->itemSize->item->item }}</td>
+                                    <td class="table-td">{{ $storeRequestItem[0]->item_size_id }}</td>
+                                    <td class="table-td">{{ $storeRequestItem[0]->itemSize->size->size }}</td>
+                                    <td class="table-td">{{ $storeRequestItem->sum('qty')}}</td> --}}
+                                    {{-- <td class="table-td">{{ $item->itemSize->item->item}}</td> --}}
+                                    {{-- <td class="table-td">{{ $item->item_size_id }}</td> --}}
+
+
+                        </tr>
+                    {{-- @endforeach --}}
 
             </table>
 
