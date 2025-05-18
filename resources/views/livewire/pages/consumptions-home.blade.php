@@ -46,7 +46,7 @@
                     <div>
                         <select type="text" class="form-controll" wire:model.live="store">
                                 <option value="">Select</option>
-                                <option value="uniforms">Uniform</option>
+                                <option value="uniform">Uniform</option>
                                 <option value="promotional items">Promotional Items</option>
                         </select>
 
