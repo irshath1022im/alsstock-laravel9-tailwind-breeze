@@ -25,6 +25,8 @@ class Item extends Model
 
 
 
+
+
     public function itemTransectionLogs()
     {
         return $this->hasManyThrough(
@@ -34,12 +36,25 @@ class Item extends Model
             'item_size_id',
             'id'
         );
-
-        
     }
 
 
+        public function storeRequestItems()
+        {
+            return $this->hasManyThrough(
+                StoreRequestItem::class,
+                ItemSize::class,
+                'item_id',
+                'item_size_id',
+                'id'
+            );
+        }
+
+        public function reportGenerate()
+        {
+            return $this->hasMany(ReportGeneration::class, 'item_id');
+        }
 
 
+    }
 
-}

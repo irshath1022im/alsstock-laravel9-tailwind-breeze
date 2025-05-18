@@ -27,6 +27,10 @@ class StoreReuqest extends Model
         return $this->hasMany(StoreRequestItem::class, 'store_request_id');
     }
 
+    public function reportGenerate()
+    {
+        return $this->hasMany(ReportGeneration::class);
+    }
 
 
 }

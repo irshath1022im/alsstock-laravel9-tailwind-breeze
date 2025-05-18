@@ -34,6 +34,11 @@ class ItemSize extends Model
 
     }
 
+    public function reportGenerations()
+    {
+        return $this->hasMany(ReportGeneration::class);
+    }
+
 
 
 }

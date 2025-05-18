@@ -4,69 +4,94 @@ namespace App\Http\Livewire\Pages;
 
 use App\Models\Item;
 use App\Models\ItemTransectionLog;
+use App\Models\ReportGeneration;
 use App\Models\StoreRequestItem;
 use App\Models\StoreReuqest;
 use Livewire\Component;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ConsumptionsHome extends Component
 {
 
-    public $startDate = '2024-11-28';
-    public $endDate ='2024-11-28';
+    public $startDate;
+    public $endDate;
     public $totalRows;
+    public $store;
+
+    // public $results = [];
+
+
+    public function generate()
+    {
+
+
+        ReportGeneration::truncate();
+
+        $query =StoreRequestItem::query()
+                    ->whereHas('storeRequest', function($q){
+                        $q->when($this->startDate || $this->endDate, function($w){
+                            return $w ->whereBetween('date', [$this->startDate, $this->endDate]);
+                        });
+                    })
+
+                    ->with(['storeRequest', 'itemSize'=>function($q){
+                        return $q->with(['item'=>function($q){
+                            return $q->with(['category' => function($q){
+                                return $q->with('store');
+                        }]);
+                        }, 'size']);
+                    }])
+                    ->get();;
+
+
+            foreach($query as $item)
+                ReportGeneration::create(
+                    [
+                    'generated_date' => Carbon::now(),
+                    'start_date' => $this->startDate,
+                    'end_date' => $this->endDate,
+                    'item_id' => $item->itemSize->item->id,
+                    'store_request_id' => $item->storeRequest->id,
+                    'item_size_id' => $item->item_size_id,
+                    'qty' => $item->qty,
+                    'category' => $item->itemSize->item->category->category,
+                    'store' => $item->itemSize->item->category->store->store,
+                    ]);
+
+
+                // $this->results = ReportGeneration::get();
+
+
+
+
+    }
 
 
     public function render()
     {
 
-        // $results = StoreRequestItem::with(['storeRequest' => function($q){
-        //     return $q->whereBetween('date', ['2022-01-01', '2022-01-30']);
-        // },'itemSize'])->orderBy('id', 'desc')->get();
 
 
-    // $results = StoreRequestItem::query()
-    //                 ->whereHas('storeRequest', function($q){
-    //                     $q->when($this->startDate || $this->endDate, function($w){
-    //                         return $w -> whereBetween('date', [$this->startDate, $this->endDate]);
-    //                     });
-    //                 })
+                    $query2 = ReportGeneration::
+                                            select('item_id', 'item_size_id','category','store','start_date','end_date')
+                                            ->selectRaw('SUM(qty) as total')
+                                            ->groupBy('item_size_id')
+                                            ->with(['item', 'item_size' =>function($query){
+                                                return $query->with('size');
+                                            }])
+                                            ->when($this->store, function($query){
+                                                return $query->where('store', $this->store);
+                                            })
+                                            ->get();
 
-
-    //                 ->with(['storeRequest', 'itemSize'=>function($q){
-    //                     return $q->with(['item'=>function($q){
-    //                         return $q->with('category');
-    //                     }, 'size']);
-    //                 }])
-    //                 ->get();
-
-    // $this->totalRows = $results->count();
-
-    //                 $results3 = $results->groupBy(function( $results, int $item_size_id) {
-    //                     return $results['item_size_id'];
-    //                     // return $results;
-    //                 });
-
-
-    //                 // $results4 = $results->keyBy('item_size_id');
+                    $this->totalRows = $query2->count();
 
 
 
-        // $results3 = StoreReuqest::whereBetween('date', [$this->startDate, $this->endDate])
-        //                         ->with('storeRequestItems')
-        //                         ->get();
 
-                    // $results3 = $result->mapToGroups(function(array $item, int $key){
-                    //     return [$item['item_size_id'] => $tem['']]
-                    // })
-
-
-                    $results = Item::query()
-                                ->whereHas()
-
-
-
-        return view('livewire.pages.consumptions-home',['storeRequestItemsGrouped' => $results])
+        return view('livewire.pages.consumptions-home', ['results' => $query2])
             ->extends('layouts.printConsumption')
         ;
 
